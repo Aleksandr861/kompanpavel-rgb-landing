@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Tenor+Sans&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Tenor+Sans&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#faf8f5; --ink:#0a0a0a; --muted:#6f6f6f; --dim:#9e9e9e;
@@ -50,12 +50,12 @@ section{scroll-margin-top:92px}
   border-bottom:1px solid var(--line);
 }
 .hd-in{display:flex;align-items:center;justify-content:space-between;height:68px}
-.brand{display:flex;flex-direction:column;align-items:flex-start;gap:7px;color:var(--ink)}
-.brand svg{height:15px;width:auto;display:block}
+.brand{display:flex;flex-direction:column;align-items:flex-start;gap:5px;color:var(--ink)}
+.brand svg{height:18px;width:auto;display:block}
 .brand-sub{
-  font-family:'Inter',sans-serif;font-weight:600;
-  font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;
-  color:#4a4a4a;white-space:nowrap;
+  font-family:'Montserrat',sans-serif;font-weight:400;
+  font-size:9.5px;letter-spacing:.02em;
+  color:#1c1c1c;white-space:nowrap;
 }
 .nav{display:flex;gap:34px}
 .nav a{
@@ -71,7 +71,8 @@ section{scroll-margin-top:92px}
 .nav a:hover::after{right:0}
 .nav-short{display:none}
 @media(max-width:860px){
-  .brand-sub{font-size:7.5px;letter-spacing:.18em}
+  .brand svg{height:15px}
+  .brand-sub{font-size:8px}
   .nav{gap:22px}
   .nav a{font-size:10px;letter-spacing:.14em}
   .nav a:nth-child(1),.nav a:nth-child(2){display:none}
@@ -491,7 +492,7 @@ body.modal-open .marquee-track{animation-play-state:paused}
   <div class="wrap hd-in">
     <a class="brand" href="#top" aria-label="KOMPAN PAVEL">
       <svg viewBox="0 0 385 66" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M371.181 1.572v22.13l.439 22.263-10.803-19.484-14.382-24.91h-16.077v62.803h13.819v-22.13l-.439-22.17 10.8 19.391 14.381 24.91H385V1.571h-13.819zM280.66 1.572L257.8 64.378h14.703l3.885-10.675h29.352l3.885 10.675h15.37L302.143 1.572H280.66zm.074 40.194l10.334-30.101 10.334 30.101h-20.668zM177.83 1.572l-10.039 26.143-7.955 21.859-7.955-21.86-10.036-26.142h-19.786v62.802h14.004V40.54l-.399-22.965 8.358 22.965 9.151 23.834h13.329l9.151-23.834 8.355-22.961-.4 22.957v23.838h13.818V1.572H177.83zM81.806 0c-18.945 0-32.03 13.508-32.03 32.973s13.085 32.973 32.03 32.973 32.03-13.508 32.03-32.973S100.755 0 81.806 0zm0 54.013c-11.882 0-18.212-8.479-18.212-21.04s6.33-21.04 18.212-21.04 18.215 8.479 18.215 21.04-6.333 21.04-18.215 21.04z"/><path d="M13.819 37.754l23.143 26.62h18.309L24.649 30.365 51.503 1.572H35.185L13.505 25.65V1.572H0v62.802h13.819v-26.62zM239.429 1.572h-29.833v62.806h13.818V44.91h16.015c13.225 0 21.669-8.444 21.669-21.67 0-13.224-8.444-21.668-21.669-21.668zm8.479 21.669c0 6.317-3.415 9.736-9.736 9.736h-14.758V13.508h14.758c6.318 0 9.736 3.415 9.736 9.736v-.003z"/></svg>
-      <span class="brand-sub">Совместно с РГБ · «Ленинка»</span>
+      <span class="brand-sub">× Российская государственная библиотека</span>
     </a>
     <nav class="nav" aria-label="Навигация">
       <a href="#about">О коллекции</a>
