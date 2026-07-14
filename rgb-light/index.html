@@ -39,25 +39,36 @@ a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
 ::selection{background:var(--indigo);color:#fff}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
-section{scroll-margin-top:92px}
-.card{scroll-margin-top:98px}
+section{scroll-margin-top:180px}
+.card{scroll-margin-top:186px}
 .caps{font-family:'Tenor Sans',sans-serif;text-transform:uppercase}
 
 /* ---------- header ---------- */
 .hd{
   position:fixed;inset:0 0 auto;z-index:50;
-  background:rgba(250,248,245,.96);
-  border-bottom:1px solid var(--line);
+  background:transparent;border-bottom:1px solid transparent;
+  transition:background .35s,border-color .35s;
 }
-.hd-in{display:flex;align-items:center;justify-content:space-between;height:68px}
-.brand{display:flex;flex-direction:column;align-items:flex-start;gap:5px;color:var(--ink)}
-.brand svg{height:18px;width:auto;display:block}
+.hd.scrolled{background:var(--bg);border-bottom-color:var(--line)}
+/* размещение лого = kompanpavel.com: #dd{top:70px;left:88px} */
+.hd-in{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  height:auto;padding:70px 48px 20px 88px;max-width:none;
+  transition:padding .35s;
+}
+.hd.scrolled .hd-in{padding:14px 48px 14px 88px}
+.brand{position:relative;display:block;color:#000}
+/* лого 1:1: .logo{width:385px;height:66px;margin-top:-4px} */
+.brand svg{width:385px;height:66px;display:block;margin-top:-4px}
+/* строка под лого: пропорции их лок-апа ≤1250 (.copyright{left:0;top:46px;font-size:6px} при лого 30px),
+   масштаб на десктоп: лого 66px → строка 13px, top:101px */
+.brand{height:114px}
 .brand-sub{
+  position:absolute;left:0;top:101px;
   font-family:'Montserrat',sans-serif;font-weight:400;
-  font-size:9.5px;letter-spacing:.02em;
-  color:#1c1c1c;white-space:nowrap;
+  font-size:13px;color:#000;white-space:nowrap;
 }
-.nav{display:flex;gap:34px}
+.nav{display:flex;gap:34px;margin-top:22px;flex:none}
 .nav a{
   font-family:'Inter',sans-serif;font-weight:600;
   font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;
@@ -70,9 +81,16 @@ section{scroll-margin-top:92px}
 .nav a:hover{color:var(--indigo)}
 .nav a:hover::after{right:0}
 .nav-short{display:none}
+/* 1:1 с их @media(max-width:1250px): лого 175×30, копирайт под ним, 6px */
+@media(max-width:1250px){
+  .hd-in{padding:34px 24px 10px 40px}
+  .hd.scrolled .hd-in{padding:12px 24px 10px 40px}
+  .brand{height:54px}
+  .brand svg{width:175px;height:30px;margin-top:0}
+  .brand-sub{left:0;top:46px;font-size:6px}
+  .nav{margin-top:8px}
+}
 @media(max-width:860px){
-  .brand svg{height:15px}
-  .brand-sub{font-size:8px}
   .nav{gap:22px}
   .nav a{font-size:10px;letter-spacing:.14em}
   .nav a:nth-child(1),.nav a:nth-child(2){display:none}
@@ -81,7 +99,7 @@ section{scroll-margin-top:92px}
 }
 
 /* ---------- hero ---------- */
-.hero{padding:210px 0 0;text-align:center;position:relative}
+.hero{padding:300px 0 0;text-align:center;position:relative}
 .hero::before{
   content:"";position:absolute;z-index:-1;top:-160px;left:50%;transform:translateX(-50%);
   width:1100px;height:680px;border-radius:50%;pointer-events:none;
@@ -132,6 +150,11 @@ section{scroll-margin-top:92px}
 .stat span{
   font-family:'Tenor Sans',sans-serif;
   font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);
+}
+@media(max-width:1250px){
+  .hero{padding-top:200px}
+  section{scroll-margin-top:120px}
+  .card{scroll-margin-top:126px}
 }
 @media(max-width:640px){
   .stat b{font-size:30px}
@@ -1393,6 +1416,14 @@ document.querySelectorAll('.card-code').forEach(function(el){
     } else { done(); }
   });
 });
+
+/* ---------- шапка: фон при прокрутке ---------- */
+(function(){
+  var hd = document.querySelector('.hd');
+  function onScroll(){ hd.classList.toggle('scrolled', window.scrollY > 10); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
 
 /* ---------- появление секций ---------- */
 (function(){
