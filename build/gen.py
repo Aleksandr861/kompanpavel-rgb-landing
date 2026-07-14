@@ -68,6 +68,17 @@ def card(i):
       </article>'''
 
 cards_html = "\n".join(card(i) for i in items)
+
+# лента обложек в hero: 14 изданий, дубль для бесшовной прокрутки
+MARQUEE_PICKS = [1, 2, 3, 4, 5, 10, 12, 14, 20, 22, 24, 25, 28, 35]
+by_idx = {i["idx"]: i for i in items}
+mq_one = "\n".join(
+    f'      <a class="mq-item" href="#item-{n}" title="{html.escape(by_idx[n]["title"])} — открыть в каталоге">'
+    f'<img src="assets/covers/{n:02d}.jpg" alt="{html.escape(by_idx[n]["title"])}" decoding="async"></a>'
+    for n in MARQUEE_PICKS if n in by_idx
+)
+marquee_html = mq_one + "\n" + mq_one
+
 persons_options = "\n".join(
     f'          <option value="{html.escape(p)}">{html.escape(p)}</option>'
     for p, _ in experts
@@ -79,6 +90,7 @@ with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "template.htm
     tpl = f.read()
 
 page = (tpl.replace("__CARDS__", cards_html)
+           .replace("__MARQUEE__", marquee_html)
            .replace("__PERSON_OPTIONS__", persons_options)
            .replace("__TOTAL__", str(len(items)))
            .replace("__NBOOKS__", str(n_books))

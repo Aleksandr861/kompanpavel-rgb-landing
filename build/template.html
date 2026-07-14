@@ -37,6 +37,7 @@ button{font-family:inherit;cursor:pointer}
 ::selection{background:var(--gold);color:#0a0a0a}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
 section{scroll-margin-top:84px}
+.card{scroll-margin-top:90px}
 
 /* ---------- header ---------- */
 .hd{
@@ -122,11 +123,12 @@ section{scroll-margin-top:84px}
 .marquee-track{display:flex;gap:14px;width:max-content;animation:mq 55s linear infinite;animation-play-state:paused}
 .marquee.live .marquee-track{animation-play-state:running}
 .marquee:hover .marquee-track{animation-play-state:paused}
+.mq-item{display:block;flex:none}
 .marquee-track img{
-  height:190px;width:auto;border-radius:3px;opacity:.82;transition:opacity .3s;
-  filter:saturate(.92);
+  height:190px;width:auto;border-radius:3px;opacity:.82;
+  transition:opacity .3s,transform .3s;filter:saturate(.92);
 }
-.marquee-track img:hover{opacity:1}
+.mq-item:hover img{opacity:1;transform:translateY(-4px)}
 @keyframes mq{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 
@@ -215,6 +217,7 @@ section{scroll-margin-top:84px}
   transition:transform .35s,border-color .35s,box-shadow .35s;
 }
 .card:hover{transform:translateY(-5px);border-color:#3d3627;box-shadow:0 24px 48px -24px rgba(0,0,0,.7)}
+.card.flash{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 24px 48px -24px rgba(201,166,104,.35)}
 .card-cover{position:relative;aspect-ratio:3/4;overflow:hidden;background:#191813}
 .card-cover img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .card:hover .card-cover img{transform:scale(1.045)}
@@ -333,8 +336,10 @@ section{scroll-margin-top:84px}
       <div class="stat"><b>РГБ</b><span>Москва · читальные залы</span></div>
     </div>
   </div>
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track" id="mq"></div>
+  <div class="marquee">
+    <div class="marquee-track" id="mq">
+__MARQUEE__
+    </div>
   </div>
 </section>
 
@@ -467,17 +472,10 @@ __CARDS__
 </footer>
 
 <script>
-/* ---------- marquee: собираем ленту обложек ---------- */
+/* ---------- лента обложек ---------- */
 (function(){
-  var track = document.getElementById('mq');
-  /* 14 обложек достаточно: слишком широкая лента перегружает рендер */
-  var picks = [1,2,3,4,5,10,12,14,20,22,24,25,28,35];
-  var half = picks.map(function(i){
-    return '<img src="assets/covers/'+('0'+i).slice(-2)+'.jpg" alt="" decoding="async">';
-  }).join('');
-  track.innerHTML = half + half; /* дубль для бесшовной прокрутки */
+  var mq = document.querySelector('.marquee');
   /* анимация крутится только пока лента в кадре — бережём GPU */
-  var mq = track.parentElement;
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function(es){
       es.forEach(function(e){ mq.classList.toggle('live', e.isIntersecting); });
@@ -485,6 +483,18 @@ __CARDS__
   } else {
     mq.classList.add('live');
   }
+  /* клик по обложке — прокрутка к карточке в каталоге + подсветка */
+  document.querySelectorAll('.mq-item').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var card = document.getElementById(a.getAttribute('href').slice(1));
+      if (!card) return;
+      ev.preventDefault();
+      card.scrollIntoView({behavior:'smooth', block:'start'});
+      history.replaceState(null, '', a.getAttribute('href'));
+      card.classList.add('flash');
+      setTimeout(function(){ card.classList.remove('flash'); }, 1800);
+    });
+  });
 })();
 
 /* ---------- фильтры каталога ---------- */
