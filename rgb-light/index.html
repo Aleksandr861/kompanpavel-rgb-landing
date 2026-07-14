@@ -348,16 +348,35 @@ section{scroll-margin-top:92px}
 .access-lead a{color:var(--indigo);border-bottom:1px solid var(--indigo-line)}
 .access-lead a:hover{opacity:.6}
 .steps{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:var(--indigo-line);border:1px solid var(--indigo-line);margin-top:64px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:64px;
 }
-.step{background:#fff;padding:46px 38px}
+.step{
+  background:#fff;padding:54px 40px 46px;position:relative;overflow:hidden;
+  border:1px solid var(--line);
+  transition:border-color .3s,transform .35s,box-shadow .35s;
+}
+.step:hover{
+  border-color:var(--indigo);transform:translateY(-4px);
+  box-shadow:0 32px 52px -30px rgba(29,10,78,.35);
+}
 .step-num{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:40px;font-weight:600;color:var(--indigo);margin-bottom:22px;display:block;line-height:1;
+  position:absolute;top:-26px;right:14px;pointer-events:none;
+  font-family:'Playfair Display',Georgia,serif;font-style:italic;
+  font-size:170px;font-weight:600;color:rgba(50,18,122,.07);line-height:1;
 }
-.step b{display:block;font-size:15px;font-weight:600;margin-bottom:12px;line-height:1.4}
-.step p{font-size:13.5px;color:var(--muted);line-height:1.75}
+.step-tag{
+  display:block;margin-bottom:26px;
+  font-family:'Tenor Sans',sans-serif;
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--indigo);
+}
+.step-tag::after{
+  content:"";display:block;width:34px;height:1px;background:var(--indigo);margin-top:14px;
+}
+.step b{
+  display:block;font-family:'Playfair Display',Georgia,serif;
+  font-size:20px;font-weight:600;margin-bottom:14px;line-height:1.35;
+}
+.step p{font-size:14px;color:var(--muted);line-height:1.8;position:relative}
 .step a{color:var(--indigo);border-bottom:1px solid var(--indigo-line)}
 .step a:hover{opacity:.6}
 .access-note{
@@ -1116,17 +1135,20 @@ section{scroll-margin-top:92px}
     <p class="access-lead reveal">Все книги и журналы уже <b>интегрированы в фонды РГБ</b> и доступны для заказа в читальные залы. Выберите издание в каталоге выше, скопируйте его библиотечный шифр — и закажите через каталог на <a href="https://www.rsl.ru" target="_blank" rel="noopener">rsl.ru</a> или в самой библиотеке.</p>
     <div class="steps reveal">
       <div class="step">
-        <span class="step-num">1</span>
+        <span class="step-num" aria-hidden="true">1</span>
+        <span class="step-tag">Шаг 01</span>
         <b>Найдите издание в каталоге</b>
         <p>Выберите книгу или журнал на этой странице и скопируйте его библиотечный шифр — например, ЕБШ10877.</p>
       </div>
       <div class="step">
-        <span class="step-num">2</span>
+        <span class="step-num" aria-hidden="true">2</span>
+        <span class="step-tag">Шаг 02</span>
         <b>Закажите в читальный зал</b>
         <p>Закажите издание по шифру через каталог на <a href="https://www.rsl.ru" target="_blank" rel="noopener">rsl.ru</a> или в самой библиотеке.</p>
       </div>
       <div class="step">
-        <span class="step-num">3</span>
+        <span class="step-num" aria-hidden="true">3</span>
+        <span class="step-tag">Шаг 03</span>
         <b>Работайте с коллекцией</b>
         <p>Получите издание в читальном зале «Ленинки» — в самом центре Москвы.</p>
       </div>
