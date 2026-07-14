@@ -1,10 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Генератор лендинга kompanpavel.com/rgb из Excel-таблицы."""
+"""Генератор лендинга kompanpavel.com/rgb из Excel-таблицы.
+
+Собирает два варианта:
+  rgb/        — тёмный (в стилистике kompanpavel.com)
+  rgb-light/  — светлый editorial (по структуре пресс-релиза)
+"""
 import openpyxl, html, json, re, os
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # корень репо
 SRC = os.path.join(BASE, "Книги и журналы -2.xlsx")   # исходная таблица (не в репо)
-OUT = os.path.join(BASE, "rgb", "index.html")
+VARIANTS = [
+    ("template.html", "rgb"),
+    ("template_light.html", "rgb-light"),
+]
 
 wb = openpyxl.load_workbook(SRC, data_only=True)
 ws = wb["Книги"]
@@ -86,16 +94,19 @@ persons_options = "\n".join(
 n_books = sum(1 for i in items if i["kind"] == "book")
 n_mags = sum(1 for i in items if i["kind"] == "mag")
 
-with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "template.html"), encoding="utf-8") as f:
-    tpl = f.read()
+for tpl_name, out_dir in VARIANTS:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), tpl_name), encoding="utf-8") as f:
+        tpl = f.read()
 
-page = (tpl.replace("__CARDS__", cards_html)
-           .replace("__MARQUEE__", marquee_html)
-           .replace("__PERSON_OPTIONS__", persons_options)
-           .replace("__TOTAL__", str(len(items)))
-           .replace("__NBOOKS__", str(n_books))
-           .replace("__NMAGS__", str(n_mags)))
+    page = (tpl.replace("__CARDS__", cards_html)
+               .replace("__MARQUEE__", marquee_html)
+               .replace("__PERSON_OPTIONS__", persons_options)
+               .replace("__TOTAL__", str(len(items)))
+               .replace("__NBOOKS__", str(n_books))
+               .replace("__NMAGS__", str(n_mags)))
 
-with open(OUT, "w", encoding="utf-8") as f:
-    f.write(page)
-print(f"OK: {len(items)} изданий ({n_books} книг, {n_mags} журналов) -> {OUT}")
+    out = os.path.join(BASE, out_dir, "index.html")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    with open(out, "w", encoding="utf-8") as f:
+        f.write(page)
+    print(f"OK: {len(items)} изданий ({n_books} книг, {n_mags} журналов) -> {out}")
