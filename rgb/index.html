@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Коллекция fashion-изданий в РГБ — KOMPAN PAVEL</title>
+<meta name="description" content="Подборка лучших мировых fashion-изданий от Павла Компана и ведущих экспертов моды — теперь в фондах Российской государственной библиотеки. Полный список с библиотечными шифрами для заказа.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Коллекция fashion-изданий в РГБ — KOMPAN PAVEL">
+<meta property="og:description" content="Более 36 редких изданий по моде, фотографии и визуальной культуре — доступны каждому в главной библиотеке страны.">
+<meta property="og:url" content="https://kompanpavel.com/rgb/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://kompanpavel.com/rgb/assets/covers/01.jpg">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --bg2:#111110; --panel:#151513; --line:#242422;
+  --text:#f4f1ea; --muted:#98938a; --dim:#6b675f;
+  --gold:#c9a668; --gold-soft:rgba(201,166,104,.14);
+  --radius:6px; --wrap:1200px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-size:16px; line-height:1.65; font-weight:300;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+::selection{background:var(--gold);color:#0a0a0a}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+section{scroll-margin-top:84px}
+
+/* ---------- header ---------- */
+.hd{
+  position:fixed;inset:0 0 auto;z-index:50;
+  background:rgba(10,10,10,.94);
+  border-bottom:1px solid var(--line);
+}
+.hd-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:14px;color:var(--text)}
+.brand svg{height:16px;width:auto;display:block}
+.brand-x{color:var(--dim);font-weight:200;font-size:15px}
+.brand-rgb{
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;line-height:1.35;
+}
+.nav{display:flex;gap:28px}
+.nav a{
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  color:var(--muted);transition:color .25s;
+}
+.nav a:hover{color:var(--gold)}
+.nav-short{display:none}
+@media(max-width:820px){
+  .brand-rgb,.brand-x{display:none}
+  .nav{gap:20px}
+  .nav a{font-size:10px;letter-spacing:.12em}
+  .nav a:nth-child(1),.nav a:nth-child(2){display:none}
+  .nav-long{display:none}
+  .nav-short{display:inline}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:190px 0 0;overflow:hidden}
+.hero-glow{
+  position:absolute;top:-220px;left:50%;transform:translateX(-50%);
+  width:900px;height:600px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(201,166,104,.09),transparent 70%);
+}
+.hero-over{
+  font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);
+  font-weight:600;margin-bottom:28px;text-align:center;
+}
+.hero h1{
+  font-size:clamp(30px,5.2vw,62px);line-height:1.12;font-weight:700;
+  text-transform:uppercase;letter-spacing:.02em;text-align:center;
+  max-width:1000px;margin:0 auto;
+}
+.hero h1 em{font-style:normal;color:var(--gold);font-weight:200}
+.hero-sub{
+  max-width:660px;margin:30px auto 0;text-align:center;
+  color:var(--muted);font-size:17px;font-weight:300;
+}
+.hero-cta{display:flex;gap:16px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 34px;border-radius:2px;
+  font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  transition:all .3s;
+}
+.btn-gold{background:var(--gold);color:#0d0c0a;border:1px solid var(--gold)}
+.btn-gold:hover{background:#d9b87e;border-color:#d9b87e}
+.btn-line{border:1px solid #3a382f;color:var(--text)}
+.btn-line:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{
+  display:flex;justify-content:center;gap:64px;margin:64px auto 0;flex-wrap:wrap;
+}
+.stat{text-align:center}
+.stat b{
+  display:block;font-size:34px;font-weight:200;color:var(--text);line-height:1.1;
+}
+.stat b i{font-style:normal;color:var(--gold)}
+.stat span{
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-weight:500;
+}
+
+/* marquee */
+.marquee{margin-top:84px;position:relative;overflow:hidden;padding-bottom:0}
+.marquee::before,.marquee::after{
+  content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;
+}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.marquee::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+.marquee-track{display:flex;gap:14px;width:max-content;animation:mq 55s linear infinite;animation-play-state:paused}
+.marquee.live .marquee-track{animation-play-state:running}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track img{
+  height:190px;width:auto;border-radius:3px;opacity:.82;transition:opacity .3s;
+  filter:saturate(.92);
+}
+.marquee-track img:hover{opacity:1}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* ---------- sections base ---------- */
+.sec{padding:110px 0}
+.sec-head{margin-bottom:56px}
+.sec-over{
+  font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  font-weight:600;margin-bottom:16px;
+}
+.sec-title{
+  font-size:clamp(24px,3.2vw,40px);font-weight:700;text-transform:uppercase;
+  letter-spacing:.02em;line-height:1.2;max-width:720px;
+}
+.hr{border:none;border-top:1px solid var(--line)}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.about-grid p{color:var(--muted);margin-bottom:20px;font-size:16.5px}
+.about-grid p:last-child{margin-bottom:0}
+.about-grid b{color:var(--text);font-weight:500}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:8px}}
+
+/* ---------- quote ---------- */
+.quote{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quote-in{max-width:880px;margin:0 auto;text-align:center;padding:0 24px}
+.quote-mark{font-size:84px;line-height:.4;color:var(--gold);font-weight:200;display:block;margin-bottom:34px}
+.quote-text{
+  font-size:clamp(18px,2.2vw,24px);font-weight:300;font-style:italic;line-height:1.6;color:var(--text);
+}
+.quote-author{margin-top:36px}
+.quote-author b{
+  display:block;font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+}
+.quote-author span{font-size:12px;color:var(--dim);letter-spacing:.12em;text-transform:uppercase}
+
+/* ---------- experts ---------- */
+.experts-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);
+}
+.expert{background:var(--bg);padding:32px 28px;transition:background .3s}
+.expert:hover{background:var(--bg2)}
+.expert b{
+  display:block;font-size:15.5px;font-weight:600;letter-spacing:.04em;margin-bottom:8px;
+}
+.expert span{font-size:13px;color:var(--muted);line-height:1.5;display:block}
+.expert .tag{
+  display:inline-block;margin-top:14px;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;
+}
+@media(max-width:900px){.experts-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.experts-grid{grid-template-columns:1fr}}
+
+/* ---------- catalog ---------- */
+.filters{
+  display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:14px;
+}
+.chip{
+  border:1px solid #34322b;background:transparent;color:var(--muted);
+  padding:10px 22px;border-radius:100px;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:500;transition:all .25s;
+}
+.chip:hover{border-color:var(--gold);color:var(--gold)}
+.chip.on{background:var(--gold);border-color:var(--gold);color:#0d0c0a;font-weight:600}
+.filters-right{display:flex;gap:12px;margin-left:auto;flex-wrap:wrap}
+.search,.select{
+  background:var(--panel);border:1px solid #2c2a25;color:var(--text);
+  border-radius:100px;padding:10px 20px;font-size:13px;font-family:inherit;font-weight:400;
+  outline:none;transition:border-color .25s;
+}
+.search{width:250px}
+.search::placeholder{color:var(--dim)}
+.search:focus,.select:focus{border-color:var(--gold)}
+.select{appearance:none;-webkit-appearance:none;padding-right:40px;cursor:pointer;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23988' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 18px center;
+}
+.count{font-size:12px;color:var(--dim);letter-spacing:.06em;margin:0 0 34px}
+.count b{color:var(--gold);font-weight:600}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:26px}
+.card{
+  background:var(--panel);border:1px solid #222019;border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .35s,border-color .35s,box-shadow .35s;
+}
+.card:hover{transform:translateY(-5px);border-color:#3d3627;box-shadow:0 24px 48px -24px rgba(0,0,0,.7)}
+.card-cover{position:relative;aspect-ratio:3/4;overflow:hidden;background:#191813}
+.card-cover img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover .card-cover img{transform:scale(1.045)}
+.card-kind{
+  position:absolute;top:14px;left:14px;
+  background:rgba(10,10,10,.82);
+  color:var(--text);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+  padding:6px 13px;border-radius:100px;border:1px solid rgba(255,255,255,.14);
+}
+.card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.card-code{
+  align-self:flex-start;
+  font-size:17px;font-weight:800;letter-spacing:.1em;color:var(--gold);
+  background:var(--gold-soft);border:1px solid rgba(201,166,104,.35);
+  padding:7px 16px;border-radius:3px;margin-bottom:16px;
+  cursor:pointer;position:relative;transition:all .25s;user-select:none;
+}
+.card-code:hover{background:rgba(201,166,104,.22)}
+.card-code.copied::after{
+  content:"Скопировано";position:absolute;left:50%;top:-30px;transform:translateX(-50%);
+  background:var(--gold);color:#0d0c0a;font-size:10px;font-weight:600;letter-spacing:.08em;
+  padding:4px 10px;border-radius:3px;white-space:nowrap;
+}
+.card-title{font-size:16.5px;font-weight:600;line-height:1.35;letter-spacing:.01em;margin-bottom:10px}
+.card-rec{font-size:12px;color:var(--dim);margin-bottom:14px;font-weight:400}
+.card-rec b{color:var(--muted);font-weight:500}
+.card-role{display:inline-block;margin-left:7px;color:var(--gold);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.card-text{
+  font-size:13.5px;color:var(--muted);line-height:1.6;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;
+}
+.card.open .card-text{-webkit-line-clamp:unset}
+.card-more{
+  align-self:flex-start;margin-top:12px;background:none;border:none;
+  color:var(--gold);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+  padding:2px 0;border-bottom:1px solid transparent;transition:border-color .25s;
+}
+.card-more:hover{border-bottom-color:var(--gold)}
+.empty{
+  display:none;text-align:center;color:var(--dim);padding:80px 0;font-size:15px;
+}
+.empty.show{display:block}
+
+/* ---------- access ---------- */
+.access{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:14px}
+.step{background:var(--bg2);padding:40px 32px}
+.step-num{
+  font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.16em;margin-bottom:20px;display:block;
+}
+.step b{display:block;font-size:15.5px;font-weight:600;margin-bottom:12px;line-height:1.4}
+.step p{font-size:13.5px;color:var(--muted)}
+.step a{color:var(--gold);border-bottom:1px solid rgba(201,166,104,.4)}
+.access-note{
+  margin-top:40px;padding:26px 30px;border:1px solid rgba(201,166,104,.25);
+  border-radius:var(--radius);background:var(--gold-soft);
+  font-size:13.5px;color:var(--muted);line-height:1.7;
+}
+.access-note b{color:var(--gold);font-weight:600}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+.ft{padding:64px 0 44px}
+.ft-in{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.ft .brand svg{height:13px}
+.ft-social{display:flex;gap:22px}
+.ft-social a{
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  font-weight:500;transition:color .25s;
+}
+.ft-social a:hover{color:var(--gold)}
+.ft-copy{font-size:11.5px;color:var(--dim);letter-spacing:.04em}
+.ft-copy a{color:var(--muted)}
+.ft-copy a:hover{color:var(--gold)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="#top" aria-label="KOMPAN PAVEL">
+      <svg viewBox="0 0 385 66" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M371.181 1.572v22.13l.439 22.263-10.803-19.484-14.382-24.91h-16.077v62.803h13.819v-22.13l-.439-22.17 10.8 19.391 14.381 24.91H385V1.571h-13.819zM280.66 1.572L257.8 64.378h14.703l3.885-10.675h29.352l3.885 10.675h15.37L302.143 1.572H280.66zm.074 40.194l10.334-30.101 10.334 30.101h-20.668zM177.83 1.572l-10.039 26.143-7.955 21.859-7.955-21.86-10.036-26.142h-19.786v62.802h14.004V40.54l-.399-22.965 8.358 22.965 9.151 23.834h13.329l9.151-23.834 8.355-22.961-.4 22.957v23.838h13.818V1.572H177.83zM81.806 0c-18.945 0-32.03 13.508-32.03 32.973s13.085 32.973 32.03 32.973 32.03-13.508 32.03-32.973S100.755 0 81.806 0zm0 54.013c-11.882 0-18.212-8.479-18.212-21.04s6.33-21.04 18.212-21.04 18.215 8.479 18.215 21.04-6.333 21.04-18.215 21.04z"/><path d="M13.819 37.754l23.143 26.62h18.309L24.649 30.365 51.503 1.572H35.185L13.505 25.65V1.572H0v62.802h13.819v-26.62zM239.429 1.572h-29.833v62.806h13.818V44.91h16.015c13.225 0 21.669-8.444 21.669-21.67 0-13.224-8.444-21.668-21.669-21.668zm8.479 21.669c0 6.317-3.415 9.736-9.736 9.736h-14.758V13.508h14.758c6.318 0 9.736 3.415 9.736 9.736v-.003z"/></svg>
+      <span class="brand-x">×</span>
+      <span class="brand-rgb">Российская государственная<br>библиотека</span>
+    </a>
+    <nav class="nav" aria-label="Навигация">
+      <a href="#about">О проекте</a>
+      <a href="#experts">Эксперты</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#access"><span class="nav-long">Как получить доступ</span><span class="nav-short">Доступ</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="hero-over">Kompan Pavel &nbsp;×&nbsp; Российская государственная библиотека</p>
+    <h1>Коллекция лучших мировых <em>fashion</em>-изданий — в&nbsp;«Ленинке»</h1>
+    <p class="hero-sub">Редкие альбомы великих фотографов, малотиражные зарубежные издания и культовые независимые журналы — отобраны Павлом Компаном и ведущими экспертами моды. Теперь доступны каждому в главной библиотеке страны.</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#catalog">Смотреть каталог</a>
+      <a class="btn btn-line" href="#access">Как получить доступ</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>36<i>+</i></b><span>изданий в коллекции</span></div>
+      <div class="stat"><b>9</b><span>экспертов индустрии</span></div>
+      <div class="stat"><b>РГБ</b><span>Москва · читальные залы</span></div>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="mq"></div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-over">О проекте</p>
+      <h2 class="sec-title">Архив визуальной культуры для тех, кто создаёт образы</h2>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>Продюсер и основатель компании <b>KOMPAN PAVEL</b> Павел Компан вместе с ведущими экспертами модной индустрии страны сформировал подборку лучших мировых изданий для подготовки и вдохновения к fashion-съёмкам.</p>
+        <p>Уникальные и малотиражные зарубежные издания, альбомы великих фотографов современности, редкие книги по искусству и визуальной культуре теперь доступны в главной библиотеке страны.</p>
+      </div>
+      <div class="reveal">
+        <p>Коллекция предназначена для <b>фотографов, стилистов, продюсеров, креативных директоров</b> и всех, кто работает с визуальным контентом.</p>
+        <p>Проект носит благотворительный характер: коллекция закуплена на средства от продажи книги компании KOMPAN PAVEL «500 страниц ответов. Том&nbsp;1».</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUOTE ================= -->
+<section class="quote sec">
+  <div class="quote-in reveal">
+    <span class="quote-mark">“</span>
+    <p class="quote-text">Каждый раз при подготовке к масштабным съёмкам я перелистываю сотни книг. На поиск этих изданий по всему миру я потратил не один десяток лет. Ко мне часто обращались коллеги с вопросом: «Где искать вдохновение и развивать насмотренность?» Так родилась идея создать этот архив. Теперь эти редкие сокровища визуальной культуры не пылятся в частных коллекциях, а доступны в самом центре Москвы каждому, кто хочет создавать визуальный продукт мирового уровня.</p>
+    <div class="quote-author">
+      <b>Павел Компан</b>
+      <span>продюсер, автор проекта</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERTS ================= -->
+<section class="sec" id="experts">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-over">Кураторы подборки</p>
+      <h2 class="sec-title">Издания рекомендуют лидеры индустрии</h2>
+    </div>
+    <div class="experts-grid reveal">
+      <div class="expert"><b>Алёна Долецкая</b><span>Первый главный редактор журнала VOGUE Россия, журналист и писатель</span><i class="tag">журналист</i></div>
+      <div class="expert"><b>Павел Компан</b><span>Продюсер, основатель KOMPAN PAVEL, автор проекта</span><i class="tag">продюсер</i></div>
+      <div class="expert"><b>Данил Головкин</b><span>Один из ведущих fashion-фотографов России</span><i class="tag">фотограф</i></div>
+      <div class="expert"><b>Алексей Колпаков</b><span>Один из ведущих fashion-фотографов России</span><i class="tag">фотограф</i></div>
+      <div class="expert"><b>Владимир Васильчиков</b><span>Один из ведущих fashion-фотографов России</span><i class="tag">фотограф</i></div>
+      <div class="expert"><b>Вадим Галаганов</b><span>Один из самых влиятельных стилистов страны</span><i class="tag">стилист</i></div>
+      <div class="expert"><b>Алёна Моисеева</b><span>Топ-визажист международного класса</span><i class="tag">визажист</i></div>
+      <div class="expert"><b>Константин Котов</b><span>Основатель книжного проекта Lebigmag</span><i class="tag">Lebigmag</i></div>
+      <div class="expert"><b>Кристина Мицар</b><span>Куратор проекта, учредитель благотворительного фонда «Голос добра»</span><i class="tag">куратор</i></div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ================= CATALOG ================= -->
+<section class="sec" id="catalog">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-over">Каталог коллекции</p>
+      <h2 class="sec-title">Полный список изданий с&nbsp;библиотечными шифрами</h2>
+    </div>
+
+    <div class="filters reveal">
+      <button class="chip on" data-kind="all" type="button">Все · 36</button>
+      <button class="chip" data-kind="book" type="button">Книги · 23</button>
+      <button class="chip" data-kind="mag" type="button">Журналы · 13</button>
+      <div class="filters-right">
+        <select class="select" id="person" aria-label="Фильтр по эксперту">
+          <option value="">Все эксперты</option>
+          <option value="Алексей Колпаков">Алексей Колпаков</option>
+          <option value="Алёна Долецкая">Алёна Долецкая</option>
+          <option value="Алёна Моисеева">Алёна Моисеева</option>
+          <option value="Вадим Галаганов">Вадим Галаганов</option>
+          <option value="Владимир Васильчиков">Владимир Васильчиков</option>
+          <option value="Данил Головкин">Данил Головкин</option>
+          <option value="Константин Котов">Константин Котов</option>
+          <option value="Павел Компан">Павел Компан</option>
+        </select>
+        <input class="search" id="q" type="search" placeholder="Название или шифр…" aria-label="Поиск по каталогу">
+      </div>
+    </div>
+    <p class="count">Показано <b id="shown">36</b> из 36 · нажмите на шифр, чтобы скопировать</p>
+
+    <div class="grid" id="grid">
+
+      <article class="card" data-kind="book" data-person="Алёна Долецкая"
+               data-search="annie leibovitz. portraits 2005-2016 ебш10877" id="item-1">
+        <div class="card-cover">
+          <img src="assets/covers/01.jpg" alt="Annie Leibovitz. Portraits 2005-2016 — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10877</div>
+          <h3 class="card-title">Annie Leibovitz. Portraits 2005-2016</h3>
+          <p class="card-rec">Рекомендует <b>Алёна Долецкая</b><span class="card-role">журналист</span></p>
+          <p class="card-text">Лучшие и наиболее репрезентативные портреты американского фотографа Энни Лейбовиц с 2005 по 2016 год. Её работы документируют современную культуру с особым взглядом художника, остроумием и сверхъестественной способностью персонализировать даже самых узнаваемых и выдающихся личностей, среди которых Серена и Винус Уильямс, Шерил Сэндберг, Анна Винтур, Леонард Коэн, Джаспер Джонс, Кейтлин Дженнер, Барак Обама и королева Елизавета II.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Павел Компан"
+               data-search="peter lindbergh. dior xl. new york/archives ебш10878" id="item-2">
+        <div class="card-cover">
+          <img src="assets/covers/02.jpg" alt="Peter Lindbergh. Dior XL. New York/Archives — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10878</div>
+          <h3 class="card-title">Peter Lindbergh. Dior XL. New York/Archives</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">Двухтомное издание представляет работы немецкого фотографа Питера Линдберга — автора женских образов Dior, сделавшего Марион Котийяр и Шарлиз Терон музами и вдохновительницами бренда. Первый том включает 165 никогда ранее не публиковавшихся изображений со съёмок, второй же воспроизводит культовые кадры для Vogue и Harper&#x27;s Bazaar, представляя во всей полноте и разнообразии женские кампании Dior.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Алёна Долецкая"
+               data-search="vanity fair 100 years: from the jazz age to our age ебш10879" id="item-3">
+        <div class="card-cover">
+          <img src="assets/covers/03.jpg" alt="Vanity Fair 100 Years: From the Jazz Age to Our Age — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10879</div>
+          <h3 class="card-title">Vanity Fair 100 Years: From the Jazz Age to Our Age</h3>
+          <p class="card-rec">Рекомендует <b>Алёна Долецкая</b><span class="card-role">журналист</span></p>
+          <p class="card-text">С момента своего создания Vanity Fair представлял современную эпоху, используя остроумие, воображение, несравненное литературное повествование и новаторские образы от величайших фотографов, художников и иллюстраторов того времени. Через век джаза и Великую депрессию к насыщенному изображениями веку информации книга десятилетие за десятилетием раскрывает историю журнала, ставшего отражением общественной и культурной жизни целого столетия.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Данил Головкин"
+               data-search="tim walker: shoot for the moon ебш10880" id="item-4">
+        <div class="card-cover">
+          <img src="assets/covers/04.jpg" alt="Tim Walker: Shoot for the Moon — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10880</div>
+          <h3 class="card-title">Tim Walker: Shoot for the Moon</h3>
+          <p class="card-rec">Рекомендует <b>Данил Головкин</b><span class="card-role">фотограф</span></p>
+          <p class="card-text">Издание приближает зрителей к миру фантазии британского фотографа Тима Уокера, рассказывая историю о другой, более тёмной стороне жанра фэшн-съемки. Собрание демонстрирует всю широту причудливых и диких миров фотографа в его фирменном декадентско-эксцентричном стиле, которые исследуют все новые вопросы воображения и вдохновения.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Вадим Галаганов"
+               data-search="peter lindbergh: images of women i ебш10881" id="item-5">
+        <div class="card-cover">
+          <img src="assets/covers/05.jpg" alt="Peter Lindbergh: Images of Women I — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10881</div>
+          <h3 class="card-title">Peter Lindbergh: Images of Women I</h3>
+          <p class="card-rec">Рекомендует <b>Вадим Галаганов</b><span class="card-role">стилист</span></p>
+          <p class="card-text">Массивная коллекция фотографа Питера Линдберга, в которой запечатлена истинная красота женщины и женских форм. Немецкий мастер не только стал одним из основателей феномена супермоделей в 1980-х и 90-х годах, но и воспел его в образах, не имеющих ничего общего с глянцевым гламуром прошлых времен. В чёрно-белом варианте, в основном без макияжа и с заразительной естественностью, его модели: Наоми Кэмпбелл, Эмбер Валлетта, Кейт Мосс, Милла Йовович, Настасья Кински и другие — воплощали новый идеал красоты и давали имена и лица образу женщин целой эпохи.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Павел Компан"
+               data-search="peter lindbergh. on fashion photography ебш10882" id="item-6">
+        <div class="card-cover">
+          <img src="assets/covers/06.jpg" alt="Peter Lindbergh. On Fashion Photography — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10882</div>
+          <h3 class="card-title">Peter Lindbergh. On Fashion Photography</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">Питер Линдберг стал пионером в области фэшн-фотографии, избегая промышленных стандартов красоты и вместо этого подчеркивая сущность и индивидуальность изображаемых фигур. В его снимках прослеживаются кинематографические интонации и гуманистический подход, которые рождают соблазнительные и интроспективные образы. От фотографии, выбранной Анной Винтур для обложки ее первого номера Vogue, до легендарного снимка Тины Тёрнер на Эйфелевой башне — на фотографиях Линдберга на первый план никогда не выходят одежда, знаменитости или гламур. Каждая фотография передает человечность объекта с безмятежной меланхолией.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Данил Головкин"
+               data-search="annie leibovitz. wonderland ебш10883" id="item-7">
+        <div class="card-cover">
+          <img src="assets/covers/07.jpg" alt="Annie Leibovitz. Wonderland — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10883</div>
+          <h3 class="card-title">Annie Leibovitz. Wonderland</h3>
+          <p class="card-rec">Рекомендует <b>Данил Головкин</b><span class="card-role">фотограф</span></p>
+          <p class="card-text">Удивительный рассказ легендарного фотографа Энни Лейбовиц о её встречах с модной индустрией на протяжении пяти десятилетий. Оглядываясь на свою работу, Лейбовиц признается, что мода всегда была рядом, однако если бы не её работа для Vogue, этот жанр обошел бы её стороной. Издание включает 350 необычных фотографий, запечатлевших широкий и разнообразный круг людей: Николь Кидман, Пину Бауш, Кейт Бланшетт, Леди Гага, Мэтью Барни, Кейт Мосс, Рианну, Карла Лагерфельда и многих других.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Алексей Колпаков"
+               data-search="miles aldridge. please please return polaroid ебш10884" id="item-8">
+        <div class="card-cover">
+          <img src="assets/covers/08.jpg" alt="Miles Aldridge. Please Please Return Polaroid — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10884</div>
+          <h3 class="card-title">Miles Aldridge. Please Please Return Polaroid</h3>
+          <p class="card-rec">Рекомендует <b>Алексей Колпаков</b><span class="card-role">фотограф</span></p>
+          <p class="card-text">Посвящение британского фотографа Майлза Олдриджа плёночной фотографии Polaroid и призыв к её возрождению. Издание представляет новые и винтажные снимки из более чем 20-летнего архива, расположенные в кажущейся случайной последовательности, сформированной сновидческой логикой и неожиданными сопоставлениями. Альбом исследует преданность Олдриджа аналоговым процессам, где вырезание и склеивание по-прежнему остаются ручной работой, выполняемой ножницами, интуицией и немалым терпением.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Данил Головкин"
+               data-search="david lachapelle. good news ебш10885" id="item-9">
+        <div class="card-cover">
+          <img src="assets/covers/09.jpg" alt="David LaChapelle. Good News — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10885</div>
+          <h3 class="card-title">David LaChapelle. Good News</h3>
+          <p class="card-rec">Рекомендует <b>Данил Головкин</b><span class="card-role">фотограф</span></p>
+          <p class="card-text">Антология фоторабот американского художника Дэвида ЛаШапеля, в которых он предается размышлениям о смертности, выходя за пределы материального мира в поисках рая. Представляя собой монументальную подборку изображений, никогда ранее не публиковавшихся в книжном формате, эта возвышенная и захватывающая новая серия пытается запечатлеть то, что нельзя сфотографировать. В объектив попали Памела Андерсон, Лана Дель Рей, Майкл Джексон, Сергей Полунин и Элизабет Тейлор.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Алёна Моисеева"
+               data-search="dior: the art of color ебш10886" id="item-10">
+        <div class="card-cover">
+          <img src="assets/covers/10.jpg" alt="Dior: The Art of Color — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10886</div>
+          <h3 class="card-title">Dior: The Art of Color</h3>
+          <p class="card-rec">Рекомендует <b>Алёна Моисеева</b><span class="card-role">визажист</span></p>
+          <p class="card-text">Калейдоскопическое путешествие по истории макияжа, стиля и цвета в знаменитом доме моды Dior. В этой книге представлена история косметики Dior в контексте моды и искусства, демонстрирующая как гламурные, так и естественные образы, а также эстетику цвета, служившую источником вдохновения для многих творений Dior. Эволюция цвета на протяжении веков прослеживается через культовые работы известных художников и рекламные кампании косметики бренда.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Данил Головкин"
+               data-search="david lachapelle. lost and found. part i ебш10887" id="item-11">
+        <div class="card-cover">
+          <img src="assets/covers/11.jpg" alt="David LaChapelle. Lost and Found. Part I — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10887</div>
+          <h3 class="card-title">David LaChapelle. Lost and Found. Part I</h3>
+          <p class="card-rec">Рекомендует <b>Данил Головкин</b><span class="card-role">фотограф</span></p>
+          <p class="card-text">Работы Дэвида ЛаШапеля — это визуальное отражение нашего времени и его главных вызовов, пропущенное через уникальное и самобытное видение фотографа. Издание представляет хронику самых сильных образов ЛаШапеля-визионера. В этот том вошли работы, созданные в период его творческого возрождения, где он выстраивает собственный мост в рай и  сферы возвышенного.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Павел Компан"
+               data-search="patrick demarchelier ебш10888" id="item-12">
+        <div class="card-cover">
+          <img src="assets/covers/12.jpg" alt="Patrick Demarchelier — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10888</div>
+          <h3 class="card-title">Patrick Demarchelier</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">Патрик Демаршелье известен своим умением запечатлевать очарование модели естественным образом, часто без вычурных декораций. Его изысканные и вневременные портреты украшали страницы Vogue, Elle, Harper&#x27;s Bazaar и Glamour, а среди его моделей были Синди Кроуфорд, Кристи Терлингтон, Линда Евангелиста, Карен Элсон и Николь Кидман. Хотя его опубликованные работы отличаются безупречной эстетикой высокой моды, неопубликованные снимки раскрывают более интимную, естественную и нефильтрованную сторону его творчества.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Вадим Галаганов"
+               data-search="richard avedon. woman in the mirror ебш10889" id="item-13">
+        <div class="card-cover">
+          <img src="assets/covers/13.jpg" alt="Richard Avedon. Woman in the Mirror — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10889</div>
+          <h3 class="card-title">Richard Avedon. Woman in the Mirror</h3>
+          <p class="card-rec">Рекомендует <b>Вадим Галаганов</b><span class="card-role">стилист</span></p>
+          <p class="card-text">Ричард Аведон был одновременно фэшн-фотографом и «поэтом портретной живописи»: он стремился уловить, как элементарные факты современной жизни и человеческого бытия отражаются в его кадре. Ему удалось создать уникальный взгляд на женщин своего времени — бурной эпохи стремительно сменяющих друг друга социальных устоев, культурных идеалов и модных тенденций. Как художник, Аведон обладал редкой восприимчивостью к нюансам мимики, жестов и поведения, а его фотографии неизменно приоткрывали окно во внутренний мир героинь.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Владимир Васильчиков"
+               data-search="ralph gibson. photographs 1960-2024 ебш10890" id="item-14">
+        <div class="card-cover">
+          <img src="assets/covers/14.jpg" alt="Ralph Gibson. Photographs 1960-2024 — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10890</div>
+          <h3 class="card-title">Ralph Gibson. Photographs 1960-2024</h3>
+          <p class="card-rec">Рекомендует <b>Владимир Васильчиков</b><span class="card-role">фотограф</span></p>
+          <p class="card-text">Много путешествуя, американский фотограф Ральф Гибсон создавал собственные образные размышления как в монохромном, так и в цветном варианте. Названия этих серий — «Сомнамбулист», «Дежавю», «Дни в море» и «Кьяроскуро» — подчеркивают особую поэтическую чувствительность, лежащую в основе его творчества. Верный своей «Лейке», Гибсон перемещается между жанрами и создает новые категории видения, приближаясь к вещам и размышляя о них так, как это может сделать только молчание изображения.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Алексей Колпаков"
+               data-search="david bailey. bailey&#x27;s stardust ебш10891" id="item-15">
+        <div class="card-cover">
+          <img src="assets/covers/15.jpg" alt="David Bailey. Bailey&#x27;s Stardust — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10891</div>
+          <h3 class="card-title">David Bailey. Bailey&#x27;s Stardust</h3>
+          <p class="card-rec">Рекомендует <b>Алексей Колпаков</b><span class="card-role">фотограф</span></p>
+          <p class="card-text">Дэвид Бейли внёс выдающийся вклад в фотографию, создавая неизменно оригинальные и вдумчивые портреты. Альбом «Звёздная пыль» демонстрирует необычайное разнообразие тем, которые запечатлел мастер: актёры, писатели, музыканты, дизайнеры, модели, художники и люди, встреченные в путешествиях. Одни из них знамениты, другие неизвестны, но все — незабываемы. В издание также вошли серии, снятые в Восточной Африке, Папуа — Новой Гвинее, Австралии и Дели, а также иконы мира моды и искусства и яркие портреты Rolling Stones и Кэтрин Бейли.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Павел Компан"
+               data-search="annie leibovitz. women ебш10892" id="item-16">
+        <div class="card-cover">
+          <img src="assets/covers/16.jpg" alt="Annie Leibovitz. Women — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10892</div>
+          <h3 class="card-title">Annie Leibovitz. Women</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">Одна из самых влиятельных фотографов своего времени, Энни Лейбовиц, представляет более 250 портретов, отражающих то, как женщины выглядят сегодня: танцовщицы, актрисы, космонавты, художницы, политики, писательницы, филантропы, солдаты, спортсменки, светские львицы и учёные. Этот проект — один из самых масштабных портретных циклов, запечатлевших современных женщин, — освещает изменчивый ландшафт женственности в XXI веке через истории Луизы Буржуа, Джоан Дидион, Билли Айлиш, Анны Винтур и многих других.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Павел Компан"
+               data-search="eighties by bailey ебш10893" id="item-17">
+        <div class="card-cover">
+          <img src="assets/covers/17.jpg" alt="Eighties by Bailey — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10893</div>
+          <h3 class="card-title">Eighties by Bailey</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">В 1980-х годах мода стремилась заявить о себе и нашла в британском фэшн-фотографе Дэвиде Бейли идеального летописца. Сформировав стиль «свингующих шестидесятых», Бейли принял новый вызов восьмидесятых: более яркие цвета, ещё больший гламур, статные модели, экстремальный макияж, спандекс, лайкра и пышные причёски. В этом мире сверкают украшения, переливаются шёлка, а наряды развеваются на ветру — самые эффектные из них запечатлены в своём самом игривом, дерзком и провокационном виде.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Павел Компан"
+               data-search="the dior sessions ебш10894" id="item-18">
+        <div class="card-cover">
+          <img src="assets/covers/18.jpg" alt="The Dior Sessions — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10894</div>
+          <h3 class="card-title">The Dior Sessions</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">Известный своими изящными силуэтами и точным кроем, Dior Homme давно является лидером в мужской моде. В этом издании изысканных портретов икон и влиятельных фигур модной индустрии фотограф Николай фон Бисмарк воспевает современный стиль модного дома. В его работах отчётливо прослеживается почтение к наследию Dior: даже в самых смелых новшествах он сохраняет верность любимым узорам и цветочным мотивам Кристиана Диора, а также крою, вдохновлённому фирменными кутюрными моделями.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Алексей Колпаков"
+               data-search="helmut newton. pola woman ебш10895" id="item-19">
+        <div class="card-cover">
+          <img src="assets/covers/19.jpg" alt="Helmut Newton. Pola Woman — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10895</div>
+          <h3 class="card-title">Helmut Newton. Pola Woman</h3>
+          <p class="card-rec">Рекомендует <b>Алексей Колпаков</b><span class="card-role">фотограф</span></p>
+          <p class="card-text">Сборник полароидных снимков: подготовительных кадров с информацией о моделях, местах съёмок и клиентах, а также закулисных фотографий Хельмута Ньютона. Уникальная атмосфера этих изображений отличается от привычного, выверенного и отточенного образа его работ: комментарии, размытость и следы использования придают им прагматичный и аутентичный характер, благодаря чему эти кадры сегодня обладают самостоятельной художественной ценностью.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Павел Компан"
+               data-search="chagall ебш10896" id="item-20">
+        <div class="card-cover">
+          <img src="assets/covers/20.jpg" alt="Chagall — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10896</div>
+          <h3 class="card-title">Chagall</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">Каталог выставки в венском музее Альбертина включает 100 работ, охватывающих все этапы творческого пути Шагала, и посвящён его интересу к самым вечным и универсальным темам жизни. Монография позволяет по-новому взглянуть на ключевые аспекты его наследия. На протяжении восьми десятилетий художник реагировал на эксперименты современников — кубизм, фовизм и сюрреализм — создавая при этом свой неповторимый визуальный язык.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Алексей Колпаков"
+               data-search="mario testino. sir ебш10897" id="item-21">
+        <div class="card-cover">
+          <img src="assets/covers/21.jpg" alt="Mario Testino. SIR — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10897</div>
+          <h3 class="card-title">Mario Testino. SIR</h3>
+          <p class="card-rec">Рекомендует <b>Алексей Колпаков</b><span class="card-role">фотограф</span></p>
+          <p class="card-text">От Рио до Лондона, от Куско до Севильи — фотограф Марио Тестино известен своими свободолюбивыми хрониками одежды и поведения. В этом альбоме представлены более 300 фотографий в поисках ответа на вопрос, что делает мужчину привлекательным. Костюм, традиции, гендерная игра, портрет, фотожурналистика и мода сталкиваются в его кадре, где он исследует мужественность во всех её современных проявлениях: от денди до джентльмена, от мачо до андрогина, от мировой знаменитости до случайного прохожего.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Алёна Долецкая"
+               data-search="tim walker. story teller ебш10898" id="item-22">
+        <div class="card-cover">
+          <img src="assets/covers/22.jpg" alt="Tim Walker. Story Teller — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10898</div>
+          <h3 class="card-title">Tim Walker. Story Teller</h3>
+          <p class="card-rec">Рекомендует <b>Алёна Долецкая</b><span class="card-role">журналист</span></p>
+          <p class="card-text">Тим Уокер — один из самых визуально впечатляющих фотографов нашего времени. Альбом Story Teller демонстрирует многие из его самых ярких снимков — его мечты, превращённые в фотографии. На страницах — Александр Маккуин с черепом и сигаретами как напоминание о смерти; Альбер Эльбаз в заячьих ушах; Агнесс Дейн на песчаных дюнах Намибии; Хелена Бонэм Картер в очках Ray-Ban и с диетической колой; Стелла Теннант в розовом облаке среди рододендронов английского сада.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="book" data-person="Владимир Васильчиков"
+               data-search="josef koudelka. exiles ебш10899" id="item-23">
+        <div class="card-cover">
+          <img src="assets/covers/23.jpg" alt="Josef Koudelka. Exiles — обложка" loading="lazy">
+          <span class="card-kind">Книга</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10899</div>
+          <h3 class="card-title">Josef Koudelka. Exiles</h3>
+          <p class="card-rec">Рекомендует <b>Владимир Васильчиков</b><span class="card-role">фотограф</span></p>
+          <p class="card-text">Созданная в период с 1971 по 1987 год, серия «Изгнанники» фотографа Йозефа Куделки исследует духовное и физическое состояние изгнания после вынужденного отъезда из Чехословакии. Проект возник как ответ на личные потрясения и более широкие вопросы принадлежности: Куделка представляет изгнание не просто как географическое перемещение, а как экзистенциальное состояние. Его герои — одинокие фигуры, заброшенные городские пространства и пустынные пейзажи — воплощают отчуждение и потерю, одновременно намекая на стойкость и тихое сопротивление.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Павел Компан"
+               data-search="acne paper ебш10900" id="item-24">
+        <div class="card-cover">
+          <img src="assets/covers/24.jpg" alt="Acne Paper — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10900</div>
+          <h3 class="card-title">Acne Paper</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">Acne Paper — культовый журнал шведского бренда Acne Studios, превративший модное издание в самостоятельный культурный проект. Каждый выпуск объединяет моду, искусство, литературу и фотографию, а над журналом работали такие фигуры, как Томас Перссон, Фабьен Барон, Дэвид Симс, Паоло Роверси, Юрген Теллер, Вилли Вандерперре и Вивиан Сассен. Благодаря сильной авторской команде и выдающимся фотографам Acne Paper остаётся одним из самых красивых и влиятельных независимых журналов  своего времени.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Константин Котов"
+               data-search="antidote ебш10901" id="item-25">
+        <div class="card-cover">
+          <img src="assets/covers/25.jpg" alt="Antidote — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10901</div>
+          <h3 class="card-title">Antidote</h3>
+          <p class="card-rec">Рекомендует <b>Константин Котов</b><span class="card-role">основатель Lebigmag</span></p>
+          <p class="card-text">Antidote — один из самых авторитетных независимых журналов о моде и современной культуре, известный безупречным визуальным языком и смелым редакционным подходом. Под руководством Оливье Зама журнал объединял работы таких фотографов, как Мерт Алас, Маркус Пигготт, Паоло Роверси, Луиджи, Янго, Вилли Вандерперре, Харли Вейр и Дэвид Симс. На его страницах высокая мода встречается с современным искусством и интеллектуальной фотографией.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Константин Котов"
+               data-search="arena homme plus ебш10902" id="item-26">
+        <div class="card-cover">
+          <img src="assets/covers/26.jpg" alt="Arena Homme Plus — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10902</div>
+          <h3 class="card-title">Arena Homme Plus</h3>
+          <p class="card-rec">Рекомендует <b>Константин Котов</b><span class="card-role">основатель Lebigmag</span></p>
+          <p class="card-text">Одно из ведущих фэшн-изданий, основанное в 1994 году. Родственный проект британского Pop задумывался как мужской, но давно перерос любые гендерные ярлыки. Начав с ежемесячного выхода, журнал со временем перешёл на два роскошных номера в год. На его страницах неизменно работают ключевые авторы индустрии: Дэвид Брэдшоу, Стивен Кляйн, Стивен Майзель, Брюс Вебер, Карл Темплер, Дэвид Симс и многие другие.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Павел Компан"
+               data-search="cr fashion book ебш10903" id="item-27">
+        <div class="card-cover">
+          <img src="assets/covers/27.jpg" alt="CR Fashion Book — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10903</div>
+          <h3 class="card-title">CR Fashion Book</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">CR Fashion Book — влиятельный журнал, основанный Карин Ройтфельд после ухода из французского Vogue. Он быстро стал одной из главных площадок для модной фотографии. Над его выпусками работали Стивен Кляйн, Питер Линдберг, Брюс Вебер, Мерт Алас, Маркус Пигготт, Паоло Роверси и Стивен Майзел. Журнал сочетает высокую моду, искусство и сильный авторский голос, задавая тон современной фэшн-индустрии.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Константин Котов"
+               data-search="double ебш10904" id="item-28">
+        <div class="card-cover">
+          <img src="assets/covers/28.jpg" alt="Double — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10904</div>
+          <h3 class="card-title">Double</h3>
+          <p class="card-rec">Рекомендует <b>Константин Котов</b><span class="card-role">основатель Lebigmag</span></p>
+          <p class="card-text">Double — один из самых утончённых независимых журналов о моде и современном искусстве, основанный Вероник Брункель. Издание известно интеллектуальным подходом к фэшн-съёмке и сотрудничеством с ведущими авторами, среди которых Паоло Роверси, Дэвид Симс, Юрген Теллер, Вилли Вандерперре, Харли Вейр и Глен Лакфорд. Double ценят за безупречное визуальное качество, тонкий вкус и внимание к авторской фотографии.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Павел Компан"
+               data-search="lampoon ебш10905" id="item-29">
+        <div class="card-cover">
+          <img src="assets/covers/29.jpg" alt="Lampoon — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10905</div>
+          <h3 class="card-title">Lampoon</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">Миланский Lampoon — это более 400 страниц эстетического и интеллектуального удовольствия. Журнал чутко реагирует на социальные и культурные вызовы, преломляя их через острую смесь искусства и моды — это и формирует его яркий характер. Актуальные эссе и интервью, первоклассный визуальный контент, крупный формат и потрясающая бумага. Каждый экземпляр напечатан в Вероне на бумаге высочайшего качества, и даже выходные данные превращены здесь в элемент фирменного стиля.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Павел Компан"
+               data-search="modern matter ебш10906" id="item-30">
+        <div class="card-cover">
+          <img src="assets/covers/30.jpg" alt="Modern Matter — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10906</div>
+          <h3 class="card-title">Modern Matter</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">Modern Matter — независимый британский журнал о моде, искусстве и современной культуре. Он был основан Грейс Ходдинетт, Беном Келсом и Олу Одукойей и с первого номера заявил о себе сильной кураторской работой и сотрудничеством с ведущими фотографами — среди них Вольфганг Тильманс, Харли Вейр, Джейми Хоуксворт, Коллиер Шорр и Надин Ижевере. Благодаря выразительному визуальному языку и вниманию к новым талантам Modern Matter стал одним из самых заметных независимых журналов на современной издательской сцене.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Константин Котов"
+               data-search="numero homme berlin ебш10907" id="item-31">
+        <div class="card-cover">
+          <img src="assets/covers/31.jpg" alt="Numero Homme Berlin — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10907</div>
+          <h3 class="card-title">Numero Homme Berlin</h3>
+          <p class="card-rec">Рекомендует <b>Константин Котов</b><span class="card-role">основатель Lebigmag</span></p>
+          <p class="card-text">Numéro Berlin — немецкое издание легендарного французского журнала. Основанное Гётцем Оффергельдом, оно с первых выпусков сформировало собственный, более экспериментальный взгляд на моду, искусство и современную культуру. Визуальную идентичность журнала во многом определил арт-директор Майк Мейре, а среди его постоянных авторов — Томас Хаузер, Хеджи Шин, Асгер Карлсен, Ричард Керн, Альберт Уотсон и Бломмерс &amp; Шумм. Благодаря сочетанию радикальной фотографии, сильного дизайна и берлинской культурной оптики Numéro Berlin стал одним из самых самобытных европейских фэшн-изданий современности.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Константин Котов"
+               data-search="numero ny ебш10908" id="item-32">
+        <div class="card-cover">
+          <img src="assets/covers/32.jpg" alt="Numero NY — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10908</div>
+          <h3 class="card-title">Numero NY</h3>
+          <p class="card-rec">Рекомендует <b>Константин Котов</b><span class="card-role">основатель Lebigmag</span></p>
+          <p class="card-text">Новая франшиза знаменитого Numéro, запущенная в самом центре Манхэттена. Первый номер вышел к Нью-Йоркской неделе моды и соединил французский редакционный опыт с энергией американской поп-культуры. Выпуск включил работы известных мастеров — от Ника Найта до Инез ван Ламсверде и Винуда Матадина, от Тины Барни до Ванессы Бикрофт, от Джеффа Кунса до Рашида Джонсона, —многие из которых впервые присоединились к миру Numéro.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Константин Котов"
+               data-search="present space ебш10909" id="item-33">
+        <div class="card-cover">
+          <img src="assets/covers/33.jpg" alt="Present Space — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10909</div>
+          <h3 class="card-title">Present Space</h3>
+          <p class="card-rec">Рекомендует <b>Константин Котов</b><span class="card-role">основатель Lebigmag</span></p>
+          <p class="card-text">Present Space — независимый журнал о современной фотографии, моде, искусстве и визуальной культуре. Каждый выпуск посвящён одной теме и объединяет авторские съёмки, эссе и интервью, уделяя больше внимания исследованию, чем новостной повестке. На его страницах публиковались работы таких фотографов, как Джек Дэвисон, Вивиан Сассен, Тео Госселен, а среди героев и собеседников — художники, дизайнеры и кураторы, формирующие современную визуальную сцену. Благодаря продуманному дизайну и высокому качеству печати Present Space давно перерос формат обычного журнала и утвердился как коллекционное издание.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Павел Компан"
+               data-search="purple ебш10910" id="item-34">
+        <div class="card-cover">
+          <img src="assets/covers/34.jpg" alt="Purple — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10910</div>
+          <h3 class="card-title">Purple</h3>
+          <p class="card-rec">Рекомендует <b>Павел Компан</b><span class="card-role">продюсер</span></p>
+          <p class="card-text">Purple — один из самых влиятельных независимых журналов о современной моде, искусстве и культуре. Основанный в Париже в 1992 году, он стал важной площадкой для авторской фотографии, смелых редакционных экспериментов и интеллектуальных текстов, сформировав эстетику целого поколения изданий. Журнал был основан и по сей день возглавляется Оливье Замом, чьё видение во многом определило его узнаваемый стиль. На страницах Purple публиковались работы таких фотографов, как Юрген Теллер, Вольфганг Тильманс, Терри Ричардсон, и многих других ключевых авторов современной фотографии.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Константин Котов"
+               data-search="re-edition ебш10911" id="item-35">
+        <div class="card-cover">
+          <img src="assets/covers/35.jpg" alt="Re-Edition — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10911</div>
+          <h3 class="card-title">Re-Edition</h3>
+          <p class="card-rec">Рекомендует <b>Константин Котов</b><span class="card-role">основатель Lebigmag</span></p>
+          <p class="card-text">Re-Edition — антверпенский независимый журнал о моде, фотографии и современной культуре. Издание известно своим авангардным визуальным языком, экспериментальным подходом к съёмкам и готовностью выходить за рамки привычной модной эстетики. На его страницах публиковались работы таких фотографов, как Юрген Теллер, Харли Уэр, Джонни Дюфорт, Марк Бортвик, Рой Этридж, Питер Хьюго, Талия Четрит и Ола Риндал. Важную роль в формировании эстетики журнала сыграла стилист Лотта Волкова. Благодаря смелому выбору авторов, необычному кастингу и отказу от привычных правил модной съёмки Re-Edition стал одним из самых характерных независимых изданий нового поколения.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+
+      <article class="card" data-kind="mag" data-person="Константин Котов"
+               data-search="rouge fashionbook ебш10912" id="item-36">
+        <div class="card-cover">
+          <img src="assets/covers/36.jpg" alt="Rouge Fashionbook — обложка" loading="lazy">
+          <span class="card-kind">Журнал</span>
+        </div>
+        <div class="card-body">
+          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">ЕБШ10912</div>
+          <h3 class="card-title">Rouge Fashionbook</h3>
+          <p class="card-rec">Рекомендует <b>Константин Котов</b><span class="card-role">основатель Lebigmag</span></p>
+          <p class="card-text">Rouge Fashionbook — шанхайский независимый журнал о моде, фотографии и современной культуре, основанный в 2017 году. Под руководством главного редактора Лили Чоу издание стало одной из заметных платформ новой азиатской фэшн-сцены, соединяя молодых китайских авторов с международными творцами. На его страницах публиковались работы Яньрань Сьонг, Юлии Горбаченко, Сэма Мари-Сэнта, Хавьера Кастана, Алессио Болзони и Расмуса Вэнг Карлсена. В отличие от многих независимых изданий, ориентированных на европейскую и американскую сцену, Rouge Fashionbook формирует собственный визуальный язык, не копируя западные модели, а создавая диалог между современной китайской культурой и мировой модой. Журнал известен своим кинематографичным подходом, вниманием к новым именам и коллекционным качеством каждого выпуска.</p>
+          <button class="card-more" type="button" aria-expanded="false">Читать полностью</button>
+        </div>
+      </article>
+    </div>
+    <p class="empty" id="empty">Ничего не найдено. Попробуйте изменить запрос или сбросить фильтры.</p>
+  </div>
+</section>
+
+<!-- ================= ACCESS ================= -->
+<section class="access sec" id="access">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="sec-over">Как получить доступ</p>
+      <h2 class="sec-title">Три шага до архива</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <span class="step-num">01</span>
+        <b>Найдите издание в каталоге</b>
+        <p>Выберите книгу или журнал на этой странице и скопируйте его библиотечный шифр — например, ЕБШ10877.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <b>Закажите в читальный зал</b>
+        <p>Все издания интегрированы в фонды РГБ. Закажите издание по шифру через каталог на <a href="https://www.rsl.ru" target="_blank" rel="noopener">rsl.ru</a> или в самой библиотеке.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <b>Работайте с коллекцией</b>
+        <p>Получите издание в читальном зале «Ленинки» — в самом центре Москвы. Для записи в библиотеку понадобится паспорт.</p>
+      </div>
+    </div>
+    <p class="access-note reveal"><b>Читательский билет РГБ оформляется бесплатно</b> — при первом визите возьмите с собой паспорт. Регистрация занимает несколько минут, после чего вся коллекция будет вам доступна.</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="ft">
+  <div class="wrap ft-in">
+    <a class="brand" href="https://kompanpavel.com" aria-label="KOMPAN PAVEL">
+      <svg viewBox="0 0 385 66" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M371.181 1.572v22.13l.439 22.263-10.803-19.484-14.382-24.91h-16.077v62.803h13.819v-22.13l-.439-22.17 10.8 19.391 14.381 24.91H385V1.571h-13.819zM280.66 1.572L257.8 64.378h14.703l3.885-10.675h29.352l3.885 10.675h15.37L302.143 1.572H280.66zm.074 40.194l10.334-30.101 10.334 30.101h-20.668zM177.83 1.572l-10.039 26.143-7.955 21.859-7.955-21.86-10.036-26.142h-19.786v62.802h14.004V40.54l-.399-22.965 8.358 22.965 9.151 23.834h13.329l9.151-23.834 8.355-22.961-.4 22.957v23.838h13.818V1.572H177.83zM81.806 0c-18.945 0-32.03 13.508-32.03 32.973s13.085 32.973 32.03 32.973 32.03-13.508 32.03-32.973S100.755 0 81.806 0zm0 54.013c-11.882 0-18.212-8.479-18.212-21.04s6.33-21.04 18.212-21.04 18.215 8.479 18.215 21.04-6.333 21.04-18.215 21.04z"/><path d="M13.819 37.754l23.143 26.62h18.309L24.649 30.365 51.503 1.572H35.185L13.505 25.65V1.572H0v62.802h13.819v-26.62zM239.429 1.572h-29.833v62.806h13.818V44.91h16.015c13.225 0 21.669-8.444 21.669-21.67 0-13.224-8.444-21.668-21.669-21.668zm8.479 21.669c0 6.317-3.415 9.736-9.736 9.736h-14.758V13.508h14.758c6.318 0 9.736 3.415 9.736 9.736v-.003z"/></svg>
+    </a>
+    <nav class="ft-social" aria-label="Соцсети">
+      <a href="https://instagram.com/kompanp" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://youtube.com/@KompanPavel" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.tiktok.com/@kompanp" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://t.me/kompanpavel" target="_blank" rel="noopener">Telegram</a>
+    </nav>
+    <p class="ft-copy">© 2026 <a href="https://kompanpavel.com">KOMPAN PAVEL</a>. Все права защищены.</p>
+  </div>
+</footer>
+
+<script>
+/* ---------- marquee: собираем ленту обложек ---------- */
+(function(){
+  var track = document.getElementById('mq');
+  /* 14 обложек достаточно: слишком широкая лента перегружает рендер */
+  var picks = [1,2,3,4,5,10,12,14,20,22,24,25,28,35];
+  var half = picks.map(function(i){
+    return '<img src="assets/covers/'+('0'+i).slice(-2)+'.jpg" alt="" decoding="async">';
+  }).join('');
+  track.innerHTML = half + half; /* дубль для бесшовной прокрутки */
+  /* анимация крутится только пока лента в кадре — бережём GPU */
+  var mq = track.parentElement;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ mq.classList.toggle('live', e.isIntersecting); });
+    }).observe(mq);
+  } else {
+    mq.classList.add('live');
+  }
+})();
+
+/* ---------- фильтры каталога ---------- */
+(function(){
+  var kind = 'all', person = '', q = '';
+  var cards = [].slice.call(document.querySelectorAll('.card'));
+  var chips = [].slice.call(document.querySelectorAll('.chip'));
+  var shown = document.getElementById('shown');
+  var empty = document.getElementById('empty');
+
+  function apply(){
+    var n = 0;
+    cards.forEach(function(c){
+      var ok = (kind === 'all' || c.dataset.kind === kind)
+            && (!person || c.dataset.person === person)
+            && (!q || c.dataset.search.indexOf(q) !== -1);
+      c.style.display = ok ? '' : 'none';
+      if (ok) n++;
+    });
+    shown.textContent = n;
+    empty.classList.toggle('show', n === 0);
+  }
+  chips.forEach(function(ch){
+    ch.addEventListener('click', function(){
+      chips.forEach(function(x){ x.classList.remove('on'); });
+      ch.classList.add('on');
+      kind = ch.dataset.kind;
+      apply();
+    });
+  });
+  document.getElementById('person').addEventListener('change', function(){
+    person = this.value; apply();
+  });
+  document.getElementById('q').addEventListener('input', function(){
+    q = this.value.trim().toLowerCase(); apply();
+  });
+})();
+
+/* ---------- раскрытие описания ---------- */
+document.querySelectorAll('.card-more').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var card = btn.closest('.card');
+    var open = card.classList.toggle('open');
+    btn.textContent = open ? 'Свернуть' : 'Читать полностью';
+    btn.setAttribute('aria-expanded', open);
+  });
+});
+
+/* ---------- копирование шифра ---------- */
+document.querySelectorAll('.card-code').forEach(function(el){
+  el.addEventListener('click', function(){
+    var code = el.textContent.trim();
+    function done(){
+      el.classList.add('copied');
+      setTimeout(function(){ el.classList.remove('copied'); }, 1400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(done, done);
+    } else { done(); }
+  });
+});
+
+/* ---------- появление секций ---------- */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
