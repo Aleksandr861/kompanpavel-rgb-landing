@@ -39,8 +39,8 @@ a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
 ::selection{background:var(--indigo);color:#fff}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
-section{scroll-margin-top:180px}
-.card{scroll-margin-top:186px}
+section{scroll-margin-top:230px}
+.card{scroll-margin-top:236px}
 .caps{font-family:'Tenor Sans',sans-serif;text-transform:uppercase}
 
 /* ---------- header ---------- */
@@ -49,14 +49,12 @@ section{scroll-margin-top:180px}
   background:transparent;border-bottom:1px solid transparent;
   transition:background .35s,border-color .35s;
 }
-.hd.scrolled{background:var(--bg);border-bottom-color:var(--line)}
+.hd.scrolled{background:var(--bg)}
 /* размещение лого = kompanpavel.com: #dd{top:70px;left:88px} */
 .hd-in{
   display:flex;align-items:flex-start;justify-content:space-between;
   height:auto;padding:70px 48px 20px 88px;max-width:none;
-  transition:padding .35s;
 }
-.hd.scrolled .hd-in{padding:14px 48px 14px 88px}
 .brand{position:relative;display:block;color:#000}
 /* лого 1:1: .logo{width:385px;height:66px;margin-top:-4px} */
 .brand svg{width:385px;height:66px;display:block;margin-top:-4px}
@@ -84,7 +82,6 @@ section{scroll-margin-top:180px}
 /* 1:1 с их @media(max-width:1250px): лого 175×30, копирайт под ним, 6px */
 @media(max-width:1250px){
   .hd-in{padding:34px 24px 10px 40px}
-  .hd.scrolled .hd-in{padding:12px 24px 10px 40px}
   .brand{height:54px}
   .brand svg{width:175px;height:30px;margin-top:0}
   .brand-sub{left:0;top:46px;font-size:6px}
