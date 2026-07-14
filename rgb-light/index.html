@@ -81,7 +81,12 @@ section{scroll-margin-top:92px}
 }
 
 /* ---------- hero ---------- */
-.hero{padding:210px 0 0;text-align:center}
+.hero{padding:210px 0 0;text-align:center;position:relative}
+.hero::before{
+  content:"";position:absolute;z-index:-1;top:-160px;left:50%;transform:translateX(-50%);
+  width:1100px;height:680px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(50,18,122,.07),transparent 72%);
+}
 .hero-over{
   font-family:'Tenor Sans',sans-serif;
   font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--ink);
@@ -95,10 +100,11 @@ section{scroll-margin-top:92px}
   font-size:clamp(38px,6vw,84px);line-height:1.08;font-weight:600;
   max-width:1060px;margin:0 auto;letter-spacing:-.005em;
 }
-.hero h1 em{font-style:italic;font-weight:500}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--indigo)}
 .hero-sub{
-  max-width:620px;margin:38px auto 0;
-  color:var(--muted);font-size:16px;line-height:1.8;
+  max-width:660px;margin:38px auto 0;
+  font-family:'Playfair Display',Georgia,serif;font-style:italic;
+  color:#4a4a4a;font-size:19px;line-height:1.75;
 }
 .hero-cta{display:flex;gap:0;justify-content:center;margin-top:52px;flex-wrap:wrap}
 .btn{
@@ -190,10 +196,16 @@ section{scroll-margin-top:92px}
 }
 .picks-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 72px}
 .pick{
-  padding:24px 0;border-bottom:1px solid var(--line);
+  padding:26px 24px;border-bottom:1px solid var(--line);
+  border-left:2px solid transparent;
   font-size:15px;color:#2e2e2e;line-height:1.7;
+  transition:background .3s,border-color .3s;
 }
-.pick b{font-weight:600;color:var(--ink)}
+.pick:hover{background:var(--indigo-tint);border-left-color:var(--indigo)}
+.pick b{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:16.5px;font-weight:600;color:var(--ink);
+}
 .pick .by{
   display:block;margin-top:8px;
   font-family:'Tenor Sans',sans-serif;
@@ -230,15 +242,24 @@ section{scroll-margin-top:92px}
 .experts-intro b{font-weight:600;color:var(--ink)}
 .experts-list{border-top:1px solid var(--indigo)}
 .expert{
-  display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:baseline;
-  padding:26px 0;border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:64px 320px 1fr;gap:24px;align-items:baseline;
+  padding:28px 22px;border-bottom:1px solid var(--line);
+  transition:background .3s;
+}
+.expert:hover{background:var(--indigo-tint)}
+.expert-num{
+  font-family:'Playfair Display',Georgia,serif;font-style:italic;
+  font-size:19px;font-weight:600;color:var(--indigo);
 }
 .expert b{
   font-family:'Playfair Display',Georgia,serif;
-  font-size:21px;font-weight:600;
+  font-size:23px;font-weight:600;
 }
 .expert span{font-size:14.5px;color:var(--muted)}
-@media(max-width:680px){.expert{grid-template-columns:1fr;gap:4px}}
+@media(max-width:680px){
+  .expert{grid-template-columns:34px 1fr;gap:6px 14px;padding:22px 12px}
+  .expert span{grid-column:2}
+}
 
 /* благотворительность */
 .charity{
@@ -534,15 +555,15 @@ section{scroll-margin-top:92px}
     </div>
     <p class="experts-intro reveal">Чтобы собранная библиотека имела максимальную практическую пользу, к выбору изданий были привлечены признанные лидеры индустрии. Это люди, создававшие облик российского глянца и работавшие на съёмках с мировыми звёздами — <b>от Моники Беллуччи до Эдриана Броуди</b>.</p>
     <div class="experts-list reveal">
-      <div class="expert"><b>Алёна Долецкая</b><span>первый главный редактор журнала VOGUE Россия, журналист и писатель</span></div>
-      <div class="expert"><b>Данил Головкин</b><span>ведущий fashion-фотограф России</span></div>
-      <div class="expert"><b>Алексей Колпаков</b><span>ведущий fashion-фотограф России</span></div>
-      <div class="expert"><b>Владимир Васильчиков</b><span>ведущий fashion-фотограф России</span></div>
-      <div class="expert"><b>Вадим Галаганов</b><span>один из самых влиятельных стилистов страны</span></div>
-      <div class="expert"><b>Алёна Моисеева</b><span>топ-визажист международного класса</span></div>
-      <div class="expert"><b>Константин Котов</b><span>основатель книжного проекта Lebigmag</span></div>
-      <div class="expert"><b>Павел Компан</b><span>продюсер, автор проекта</span></div>
-      <div class="expert"><b>Кристина Мицар</b><span>куратор проекта, учредитель благотворительного фонда «Голос добра»</span></div>
+      <div class="expert"><i class="expert-num">01</i><b>Алёна Долецкая</b><span>первый главный редактор журнала VOGUE Россия, журналист и писатель</span></div>
+      <div class="expert"><i class="expert-num">02</i><b>Данил Головкин</b><span>ведущий fashion-фотограф России</span></div>
+      <div class="expert"><i class="expert-num">03</i><b>Алексей Колпаков</b><span>ведущий fashion-фотограф России</span></div>
+      <div class="expert"><i class="expert-num">04</i><b>Владимир Васильчиков</b><span>ведущий fashion-фотограф России</span></div>
+      <div class="expert"><i class="expert-num">05</i><b>Вадим Галаганов</b><span>один из самых влиятельных стилистов страны</span></div>
+      <div class="expert"><i class="expert-num">06</i><b>Алёна Моисеева</b><span>топ-визажист международного класса</span></div>
+      <div class="expert"><i class="expert-num">07</i><b>Константин Котов</b><span>основатель книжного проекта Lebigmag</span></div>
+      <div class="expert"><i class="expert-num">08</i><b>Павел Компан</b><span>продюсер, автор проекта</span></div>
+      <div class="expert"><i class="expert-num">09</i><b>Кристина Мицар</b><span>куратор проекта, учредитель благотворительного фонда «Голос добра»</span></div>
     </div>
     <p class="charity reveal">Проект носит <b>благотворительный характер</b>: коллекция закуплена на средства от продажи книги компании KOMPAN PAVEL «500 страниц ответов. Том&nbsp;1».</p>
   </div>
