@@ -12,6 +12,7 @@ SRC = os.path.join(BASE, "Книги и журналы -2.xlsx")   # исход�
 VARIANTS = [
     ("template.html", "rgb"),
     ("template_light.html", "rgb-light"),
+    ("template_light.html", "docs"),   # GitHub Pages — копия светлой версии
 ]
 
 wb = openpyxl.load_workbook(SRC, data_only=True)
