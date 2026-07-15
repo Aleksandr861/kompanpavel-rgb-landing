@@ -49,6 +49,7 @@ section{scroll-margin-top:230px}
   background:transparent;
   transition:background .35s;
 }
+.hd.scrolled{background:var(--bg)}
 /* цвет букв всегда один, как на оригинале (#000) */
 /* размещение лого = kompanpavel.com: #dd{top:70px;left:88px} */
 .hd-in{
@@ -1414,27 +1415,11 @@ document.querySelectorAll('.card-code').forEach(function(el){
   });
 });
 
-/* ---------- шапка-хамелеон: фон = цвет блока под ней ---------- */
+/* ---------- шапка: фон при прокрутке = основной фон страницы ---------- */
 (function(){
   var hd = document.querySelector('.hd');
-  var blocks = [].slice.call(document.querySelectorAll('section, footer'));
-  var bodyBg = getComputedStyle(document.body).backgroundColor;
-  function bgOf(el){
-    var c = getComputedStyle(el).backgroundColor;
-    return (!c || c === 'rgba(0, 0, 0, 0)' || c === 'transparent') ? bodyBg : c;
-  }
-  function onScroll(){
-    var probe = window.scrollY + hd.offsetHeight - 1;
-    var cur = null;
-    for (var i = 0; i < blocks.length; i++){
-      var top = blocks[i].offsetTop, bot = top + blocks[i].offsetHeight;
-      if (probe >= top && probe < bot){ cur = blocks[i]; break; }
-    }
-    var c = cur ? bgOf(cur) : bodyBg;
-    hd.style.backgroundColor = window.scrollY > 2 ? c : 'transparent';
-  }
+  function onScroll(){ hd.classList.toggle('scrolled', window.scrollY > 2); }
   window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll, {passive:true});
   onScroll();
 })();
 
