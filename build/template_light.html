@@ -49,8 +49,10 @@ section{scroll-margin-top:230px}
   background:transparent;
   transition:background .35s;
 }
-.hd.scrolled{background:var(--bg)}
-/* цвет букв всегда один, как на оригинале (#000) */
+/* лого и строка всегда #000; над тёмным блоком белеют только ссылки */
+.hd.dark .nav a{color:#fff}
+.hd.dark .nav a::after{background:#fff}
+.hd.dark .nav a:hover{opacity:.75}
 /* размещение лого = kompanpavel.com: #dd{top:70px;left:88px} */
 .hd-in{
   display:flex;align-items:flex-start;justify-content:space-between;
@@ -842,11 +844,33 @@ document.querySelectorAll('.card-code').forEach(function(el){
   });
 });
 
-/* ---------- шапка: фон при прокрутке = основной фон страницы ---------- */
+/* ---------- шапка-хамелеон: фон = цвет блока; над тёмным ссылки белые ---------- */
 (function(){
   var hd = document.querySelector('.hd');
-  function onScroll(){ hd.classList.toggle('scrolled', window.scrollY > 2); }
+  var blocks = [].slice.call(document.querySelectorAll('section, footer'));
+  var bodyBg = getComputedStyle(document.body).backgroundColor;
+  function bgOf(el){
+    var c = getComputedStyle(el).backgroundColor;
+    return (!c || c === 'rgba(0, 0, 0, 0)' || c === 'transparent') ? bodyBg : c;
+  }
+  function isDark(c){
+    var m = c.match(/\d+(\.\d+)?/g);
+    if (!m) return false;
+    return (0.299*m[0] + 0.587*m[1] + 0.114*m[2]) < 128;
+  }
+  function onScroll(){
+    var probe = window.scrollY + hd.offsetHeight - 1;
+    var cur = null;
+    for (var i = 0; i < blocks.length; i++){
+      var top = blocks[i].offsetTop, bot = top + blocks[i].offsetHeight;
+      if (probe >= top && probe < bot){ cur = blocks[i]; break; }
+    }
+    var c = cur ? bgOf(cur) : bodyBg;
+    hd.style.backgroundColor = window.scrollY > 2 ? c : 'transparent';
+    hd.classList.toggle('dark', window.scrollY > 2 && isDark(c));
+  }
   window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
   onScroll();
 })();
 
