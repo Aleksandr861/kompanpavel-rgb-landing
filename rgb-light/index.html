@@ -49,11 +49,7 @@ section{scroll-margin-top:230px}
   background:transparent;
   transition:background .35s;
 }
-/* над тёмным блоком лого и меню становятся белыми */
-.hd.dark .brand,.hd.dark .brand-sub{color:#fff}
-.hd.dark .nav a{color:#fff}
-.hd.dark .nav a::after{background:#fff}
-.hd.dark .nav a:hover{color:#fff;opacity:.75}
+/* цвет букв всегда один, как на оригинале (#000) */
 /* размещение лого = kompanpavel.com: #dd{top:70px;left:88px} */
 .hd-in{
   display:flex;align-items:flex-start;justify-content:space-between;
@@ -1427,11 +1423,6 @@ document.querySelectorAll('.card-code').forEach(function(el){
     var c = getComputedStyle(el).backgroundColor;
     return (!c || c === 'rgba(0, 0, 0, 0)' || c === 'transparent') ? bodyBg : c;
   }
-  function isDark(c){
-    var m = c.match(/\d+(\.\d+)?/g);
-    if (!m) return false;
-    return (0.299*m[0] + 0.587*m[1] + 0.114*m[2]) < 128;
-  }
   function onScroll(){
     var probe = window.scrollY + hd.offsetHeight - 1;
     var cur = null;
@@ -1441,7 +1432,6 @@ document.querySelectorAll('.card-code').forEach(function(el){
     }
     var c = cur ? bgOf(cur) : bodyBg;
     hd.style.backgroundColor = window.scrollY > 2 ? c : 'transparent';
-    hd.classList.toggle('dark', window.scrollY > 2 && isDark(c));
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll, {passive:true});
