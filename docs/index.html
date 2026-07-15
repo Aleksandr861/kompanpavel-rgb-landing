@@ -20,10 +20,10 @@
 :root{
   --bg:#faf8f5; --ink:#0a0a0a; --muted:#6f6f6f; --dim:#9e9e9e;
   --line:#e9e9e9; --line2:#d9d9d9;
-  --indigo:#32127A;         /* тёмный индиго — рамки и разделители */
-  --indigo-dark:#1d0a4e;    /* глубокие ленты: цитата, футер */
-  --indigo-line:rgba(50,18,122,.30);
-  --indigo-tint:#f6f3fb;    /* лёгкая индиго-подложка */
+  --indigo:#0a0a0a;         /* чёрный акцент — рамки и разделители */
+  --indigo-dark:#0a0a0a;    /* чёрные ленты: цитата, футер */
+  --indigo-line:rgba(10,10,10,.3);
+  --indigo-tint:#f4f4f2;    /* нейтральная светлая подложка */
   --wrap:1200px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -103,7 +103,7 @@ section{scroll-margin-top:230px}
 .hero::before{
   content:"";position:absolute;z-index:-1;top:-160px;left:50%;transform:translateX(-50%);
   width:1100px;height:680px;border-radius:50%;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(50,18,122,.07),transparent 72%);
+  background:radial-gradient(closest-side,rgba(0,0,0,.05),transparent 72%);
 }
 .hero-over{
   font-family:'Inter',sans-serif;font-weight:600;
@@ -229,6 +229,10 @@ section{scroll-margin-top:230px}
   font-family:'Playfair Display',Georgia,serif;
   font-size:16.5px;font-weight:600;color:var(--ink);
 }
+.pick .by-role{
+  display:block;margin-top:4px;
+  font-size:12.5px;color:var(--muted);line-height:1.5;
+}
 .pick .by{
   display:block;margin-top:8px;
   font-family:'Inter',sans-serif;font-weight:600;
@@ -254,7 +258,7 @@ section{scroll-margin-top:230px}
 }
 .quote-author span{
   font-family:'Tenor Sans',sans-serif;
-  font-size:10px;color:#a99cd0;letter-spacing:.2em;text-transform:uppercase;
+  font-size:10px;color:#9a9a9a;letter-spacing:.2em;text-transform:uppercase;
 }
 .quote-author b::before{
   content:"";display:block;width:44px;height:1px;background:#fff;margin:0 auto 26px;
@@ -331,9 +335,9 @@ section{scroll-margin-top:230px}
 }
 .card:hover{
   border-color:var(--indigo);transform:translateY(-4px);
-  box-shadow:0 32px 52px -30px rgba(29,10,78,.4);z-index:2;
+  box-shadow:0 32px 52px -30px rgba(0,0,0,.35);z-index:2;
 }
-.card.flash{border-color:var(--indigo);box-shadow:0 0 0 1px var(--indigo),0 32px 52px -30px rgba(29,10,78,.4);z-index:2}
+.card.flash{border-color:var(--indigo);box-shadow:0 0 0 1px var(--indigo),0 32px 52px -30px rgba(0,0,0,.35);z-index:2}
 .card-cover{position:relative;aspect-ratio:3/4;overflow:hidden;background:#f4f4f4}
 .card-cover img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .card:hover .card-cover img{transform:scale(1.04)}
@@ -398,12 +402,12 @@ section{scroll-margin-top:230px}
 }
 .step:hover{
   border-color:var(--indigo);transform:translateY(-4px);
-  box-shadow:0 32px 52px -30px rgba(29,10,78,.35);
+  box-shadow:0 32px 52px -30px rgba(0,0,0,.3);
 }
 .step-num{
   position:absolute;top:-26px;right:14px;pointer-events:none;
   font-family:'Playfair Display',Georgia,serif;font-style:italic;
-  font-size:170px;font-weight:600;color:rgba(50,18,122,.07);line-height:1;
+  font-size:170px;font-weight:600;color:rgba(0,0,0,.05);line-height:1;
 }
 .step-tag{
   display:block;margin-bottom:26px;
@@ -441,19 +445,19 @@ section{scroll-margin-top:230px}
 .ft-social{display:flex;gap:26px}
 .ft-social a{
   font-family:'Tenor Sans',sans-serif;
-  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#b3a8d6;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#bdbdbd;
   transition:color .25s;
 }
 .ft-social a:hover{color:#fff}
-.ft-copy{font-size:11.5px;color:#8d7fb5;letter-spacing:.04em}
-.ft-copy a{color:#b3a8d6}
+.ft-copy{font-size:11.5px;color:#8a8a8a;letter-spacing:.04em}
+.ft-copy a{color:#bdbdbd}
 .ft-copy a:hover{color:#fff}
 
 
 /* ---------- попап издания ---------- */
 .modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px}
 .modal[hidden]{display:none}
-.modal-back{position:absolute;inset:0;background:rgba(20,12,46,.62)}
+.modal-back{position:absolute;inset:0;background:rgba(0,0,0,.6)}
 .modal-box{
   position:relative;background:#fff;max-width:940px;width:100%;max-height:88vh;
   display:grid;grid-template-columns:42% 1fr;overflow:hidden;
@@ -469,7 +473,7 @@ section{scroll-margin-top:230px}
 }
 .modal-x:hover{background:var(--indigo);border-color:var(--indigo);color:#fff}
 .modal-cover{background:#f2efe9;display:flex;align-items:center;justify-content:center;padding:34px;min-height:320px}
-.modal-cover img{max-width:100%;max-height:74vh;box-shadow:0 26px 48px -22px rgba(20,12,46,.4)}
+.modal-cover img{max-width:100%;max-height:74vh;box-shadow:0 26px 48px -22px rgba(0,0,0,.35)}
 .modal-info{padding:52px 48px 44px;overflow-y:auto}
 .modal-kind{
   font-family:'Inter',sans-serif;font-weight:700;
@@ -529,7 +533,6 @@ body.modal-open .marquee-track{animation-play-state:paused}
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
   <div class="wrap">
-    <p class="hero-over">Kompan Pavel &nbsp;×&nbsp; Российская государственная библиотека</p>
     <h1>В&nbsp;«Ленинке» появилась коллекция лучших мировых <em>fashion</em>-изданий</h1>
     <p class="hero-sub">От Павла Компана и ведущих экспертов моды — подборка лучших мировых изданий для подготовки и вдохновения к fashion-съёмкам.</p>
     <div class="hero-cta">
@@ -592,14 +595,14 @@ body.modal-open .marquee-track{animation-play-state:paused}
     <div class="picks reveal">
       <p class="picks-title">В подборку вошло более 36 изданий, среди которых:</p>
       <div class="picks-grid">
-        <div class="pick"><b>Annie Leibovitz. Portraits 2005–2016</b> и <b>Vanity Fair 100 Years: From the Jazz Age to Our Age</b><span class="by">по рекомендации Алёны Долецкой</span></div>
-        <div class="pick"><b>Peter Lindbergh. Dior XL. New York/Archives</b> и <b>Peter Lindbergh: On Fashion Photography</b><span class="by">по рекомендации Павла Компана</span></div>
-        <div class="pick"><b>Chagall</b> и <b>Annie Leibovitz. Women</b><span class="by">по рекомендации Кристины Мицар</span></div>
-        <div class="pick"><b>Tim Walker: Shoot for the Moon</b> и <b>David LaChapelle. Lost and Found. Part I</b><span class="by">по рекомендации Данила Головкина</span></div>
-        <div class="pick"><b>Woman in the Mirror</b> (Richard Avedon) и <b>Peter Lindbergh: Images of Women I</b><span class="by">по рекомендации Вадима Галаганова</span></div>
-        <div class="pick"><b>Helmut Newton. Pola Woman</b> и <b>Mario Testino — SIR</b><span class="by">по рекомендации Алексея Колпакова</span></div>
-        <div class="pick"><b>Ralph Gibson. Photographs 1960–2024 XL</b> и <b>Josef Koudelka — Exiles</b><span class="by">по рекомендации Владимира Васильчикова</span></div>
-        <div class="pick">Ключевые независимые журналы <b>Acne Paper</b> и <b>Purple</b><span class="by">по рекомендации основателя Lebigmag Константина Котова</span></div>
+        <div class="pick"><b>Annie Leibovitz. Portraits 2005–2016</b> и <b>Vanity Fair 100 Years: From the Jazz Age to Our Age</b><span class="by">по рекомендации Алёны Долецкой</span><span class="by-role">первый главный редактор журнала VOGUE Россия, журналист и писатель</span></div>
+        <div class="pick"><b>Peter Lindbergh. Dior XL. New York/Archives</b> и <b>Peter Lindbergh: On Fashion Photography</b><span class="by">по рекомендации Павла Компана</span><span class="by-role">продюсер, автор проекта</span></div>
+        <div class="pick"><b>Chagall</b> и <b>Annie Leibovitz. Women</b><span class="by">по рекомендации Кристины Мицар</span><span class="by-role">куратор проекта, учредитель благотворительного фонда «Голос добра»</span></div>
+        <div class="pick"><b>Tim Walker: Shoot for the Moon</b> и <b>David LaChapelle. Lost and Found. Part I</b><span class="by">по рекомендации Данила Головкина</span><span class="by-role">ведущий fashion-фотограф России</span></div>
+        <div class="pick"><b>Woman in the Mirror</b> (Richard Avedon) и <b>Peter Lindbergh: Images of Women I</b><span class="by">по рекомендации Вадима Галаганова</span><span class="by-role">один из самых влиятельных стилистов страны</span></div>
+        <div class="pick"><b>Helmut Newton. Pola Woman</b> и <b>Mario Testino — SIR</b><span class="by">по рекомендации Алексея Колпакова</span><span class="by-role">ведущий fashion-фотограф России</span></div>
+        <div class="pick"><b>Ralph Gibson. Photographs 1960–2024 XL</b> и <b>Josef Koudelka — Exiles</b><span class="by">по рекомендации Владимира Васильчикова</span><span class="by-role">ведущий fashion-фотограф России</span></div>
+        <div class="pick">Ключевые независимые журналы <b>Acne Paper</b> и <b>Purple</b><span class="by">по рекомендации основателя Lebigmag Константина Котова</span><span class="by-role">основатель книжного проекта Lebigmag</span></div>
       </div>
     </div>
   </div>
@@ -1271,7 +1274,7 @@ body.modal-open .marquee-track{animation-play-state:paused}
 <!-- ================= FOOTER ================= -->
 <footer class="ft">
   <div class="wrap ft-in">
-    <a class="brand" href="https://kompanpavel.com" aria-label="KOMPAN PAVEL">
+    <a class="brand" href="https://instagram.com/kompanp" target="_blank" rel="noopener" aria-label="KOMPAN PAVEL в Instagram">
       <svg viewBox="0 0 385 66" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M371.181 1.572v22.13l.439 22.263-10.803-19.484-14.382-24.91h-16.077v62.803h13.819v-22.13l-.439-22.17 10.8 19.391 14.381 24.91H385V1.571h-13.819zM280.66 1.572L257.8 64.378h14.703l3.885-10.675h29.352l3.885 10.675h15.37L302.143 1.572H280.66zm.074 40.194l10.334-30.101 10.334 30.101h-20.668zM177.83 1.572l-10.039 26.143-7.955 21.859-7.955-21.86-10.036-26.142h-19.786v62.802h14.004V40.54l-.399-22.965 8.358 22.965 9.151 23.834h13.329l9.151-23.834 8.355-22.961-.4 22.957v23.838h13.818V1.572H177.83zM81.806 0c-18.945 0-32.03 13.508-32.03 32.973s13.085 32.973 32.03 32.973 32.03-13.508 32.03-32.973S100.755 0 81.806 0zm0 54.013c-11.882 0-18.212-8.479-18.212-21.04s6.33-21.04 18.212-21.04 18.215 8.479 18.215 21.04-6.333 21.04-18.215 21.04z"/><path d="M13.819 37.754l23.143 26.62h18.309L24.649 30.365 51.503 1.572H35.185L13.505 25.65V1.572H0v62.802h13.819v-26.62zM239.429 1.572h-29.833v62.806h13.818V44.91h16.015c13.225 0 21.669-8.444 21.669-21.67 0-13.224-8.444-21.668-21.669-21.668zm8.479 21.669c0 6.317-3.415 9.736-9.736 9.736h-14.758V13.508h14.758c6.318 0 9.736 3.415 9.736 9.736v-.003z"/></svg>
     </a>
     <nav class="ft-social" aria-label="Соцсети">
