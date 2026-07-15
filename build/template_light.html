@@ -239,15 +239,15 @@ section{scroll-margin-top:230px}
 @media(max-width:820px){.picks-grid{grid-template-columns:1fr}}
 
 /* ---------- quote: чёрная лента ---------- */
-.quote{background:var(--indigo-dark);color:#fff;padding:150px 0}
+.quote{background:#fff;color:var(--ink);padding:150px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .quote-in{max-width:940px;margin:0 auto;text-align:center;padding:0 28px}
 .quote-mark{
   font-family:'Playfair Display',Georgia,serif;
-  font-size:110px;line-height:.3;color:#fff;display:block;margin-bottom:48px;font-weight:500;
+  font-size:110px;line-height:.3;color:var(--ink);display:block;margin-bottom:48px;font-weight:500;
 }
 .quote-text{
   font-family:'Playfair Display',Georgia,serif;
-  font-size:clamp(20px,2.5vw,28px);font-weight:500;font-style:italic;line-height:1.7;color:#fff;
+  font-size:clamp(20px,2.5vw,28px);font-weight:500;font-style:italic;line-height:1.7;color:var(--ink);
 }
 .quote-author{margin-top:46px}
 .quote-author b{
@@ -256,10 +256,10 @@ section{scroll-margin-top:230px}
 }
 .quote-author span{
   font-family:'Tenor Sans',sans-serif;
-  font-size:10px;color:#9a9a9a;letter-spacing:.2em;text-transform:uppercase;
+  font-size:10px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;
 }
 .quote-author b::before{
-  content:"";display:block;width:44px;height:1px;background:#fff;margin:0 auto 26px;
+  content:"";display:block;width:44px;height:1px;background:var(--ink);margin:0 auto 26px;
 }
 
 /* ---------- experts ---------- */
