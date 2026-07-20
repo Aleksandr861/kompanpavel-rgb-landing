@@ -504,6 +504,21 @@ section{scroll-margin-top:230px}
 body.modal-open{overflow:hidden}
 body.modal-open .marquee-track{animation-play-state:paused}
 
+
+/* ---------- защита от горизонтального скролла на любой ширине ---------- */
+html,body{overflow-x:hidden;max-width:100%}
+img,svg,video,iframe{max-width:100%}
+.hero h1,.hero-sub,.sec-title,.picks-title,.pick,.pick b,.expert b,.expert span,
+.card-title,.card-text,.modal-title,.modal-text,.quote-text,.lead p,.access-lead,
+.step b,.step p,.count,.experts-intro,.brand-sub{overflow-wrap:break-word}
+/* очень узкие экраны: футер и статистика в столбик, ничего не торчит */
+@media(max-width:560px){
+  .ft-in{flex-direction:column;align-items:flex-start;gap:26px}
+  .ft-social{flex-wrap:wrap;gap:14px 20px}
+  .hero-stats{flex-wrap:wrap}
+  .stat{padding:24px 10px}
+  .wrap{padding:0 20px}
+}
 /* reveal */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:none}
