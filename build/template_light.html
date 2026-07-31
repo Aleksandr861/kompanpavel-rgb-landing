@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Коллекция fashion-изданий в РГБ — KOMPAN PAVEL</title>
-<meta name="description" content="В «Ленинке» появилась коллекция лучших мировых fashion-изданий от Павла Компана и ведущих экспертов моды. Полный список с аннотациями и библиотечными шифрами для быстрого заказа.">
+<meta name="description" content="В «Ленинке» появилась коллекция лучших мировых fashion-изданий от Павла Компана и ведущих экспертов моды. Полный список с аннотациями — все издания доступны для заказа в читальных залах.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="В «Ленинке» появилась коллекция лучших мировых fashion-изданий">
 <meta property="og:description" content="Более 36 редких изданий по моде, фотографии и визуальной культуре — доступны каждому в главной библиотеке страны.">
@@ -240,10 +240,28 @@ section{scroll-margin-top:230px}
 
 /* ---------- quote: чёрная лента ---------- */
 .quote{background:#fff;color:var(--ink);padding:150px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.quote-in{max-width:940px;margin:0 auto;text-align:center;padding:0 28px}
+.quote-in{
+  max-width:1200px;margin:0 auto;padding:0 28px;
+  display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);
+  gap:72px;align-items:center;text-align:left;
+}
+.quote-photo{margin:0;min-width:0}
+.quote-photo img{width:100%;height:auto;display:block}
+.quote-photo figcaption{
+  margin-top:18px;font-family:'Tenor Sans',sans-serif;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);line-height:2;
+}
+.quote-photo figcaption b{display:block;font-weight:400;color:var(--ink);font-size:11px}
+.quote-body{min-width:0}
 .quote-mark{
   font-family:'Playfair Display',Georgia,serif;
-  font-size:110px;line-height:.3;color:var(--ink);display:block;margin-bottom:48px;font-weight:500;
+  font-size:96px;line-height:.75;color:var(--ink);display:block;margin-bottom:14px;font-weight:500;
+}
+@media(max-width:900px){
+  .quote{padding:96px 0}
+  .quote-in{grid-template-columns:1fr;gap:48px;text-align:center;max-width:620px}
+  .quote-photo figcaption{text-align:center}
+  .quote-author b::before{margin-left:auto;margin-right:auto}
 }
 .quote-text{
   font-family:'Playfair Display',Georgia,serif;
@@ -259,7 +277,7 @@ section{scroll-margin-top:230px}
   font-size:10px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;
 }
 .quote-author b::before{
-  content:"";display:block;width:44px;height:1px;background:var(--ink);margin:0 auto 26px;
+  content:"";display:block;width:44px;height:1px;background:var(--ink);margin:0 0 26px;
 }
 
 /* ---------- experts ---------- */
@@ -601,11 +619,17 @@ __MARQUEE__
 <!-- ================= QUOTE ================= -->
 <section class="quote">
   <div class="quote-in reveal">
+    <figure class="quote-photo">
+      <img src="assets/kompan-portrait.jpg" alt="Павел Компан — продюсер, автор проекта" loading="lazy">
+      <figcaption><b>Продюсер Павел Компан</b>Фото: Данил Головкин</figcaption>
+    </figure>
+    <div class="quote-body">
     <span class="quote-mark">“</span>
     <p class="quote-text">Каждый раз при подготовке к масштабным съёмкам я перелистываю сотни книг. Это альбомы легендарных фотографов, монографии художников, редкая периодика. На поиск этих изданий по всему миру я потратил не один десяток лет. Ко мне часто обращались коллеги с вопросом: «Где искать вдохновение и развивать насмотренность?» Так родилась идея создать этот архив. Теперь эти редкие сокровища визуальной культуры не пылятся в частных коллекциях, а доступны в самом центре Москвы каждому, кто хочет создавать визуальный продукт мирового уровня.</p>
     <div class="quote-author">
       <b>Павел Компан</b>
       <span>продюсер, автор проекта</span>
+    </div>
     </div>
   </div>
 </section>
@@ -641,7 +665,7 @@ __MARQUEE__
     <div class="sec-head reveal">
       <p class="sec-over">Каталог коллекции</p>
       <h2 class="sec-title">Полный список переданной литературы</h2>
-      <p class="experts-intro" style="margin:26px 0 0">С краткими аннотациями и библиотечными шифрами для быстрого заказа в читальные залы РГБ.</p>
+      <p class="experts-intro" style="margin:26px 0 0">С краткими аннотациями — все издания доступны для заказа в читальные залы РГБ.</p>
       <p class="suppliers-note">(Подбор и поиск изданий по всему миру обеспечили <b>Masters Bookstore</b> и <b>Lebigmag</b>: они выступили поставщиками практически всей подборки.)</p>
     </div>
 
@@ -654,10 +678,10 @@ __MARQUEE__
           <option value="">Все эксперты</option>
 __PERSON_OPTIONS__
         </select>
-        <input class="search" id="q" type="search" placeholder="Название или шифр…" aria-label="Поиск по каталогу">
+        <input class="search" id="q" type="search" placeholder="Название издания…" aria-label="Поиск по каталогу">
       </div>
     </div>
-    <p class="count">Показано <b id="shown">__TOTAL__</b> из __TOTAL__ · нажмите на шифр, чтобы скопировать</p>
+    <p class="count">Показано <b id="shown">__TOTAL__</b> из __TOTAL__ · нажмите на карточку, чтобы открыть описание</p>
 
     <div class="grid" id="grid">
 __CARDS__
@@ -673,19 +697,19 @@ __CARDS__
       <p class="sec-over">Доступ к архиву</p>
       <h2 class="sec-title">Как получить доступ к архиву?</h2>
     </div>
-    <p class="access-lead reveal">Все книги и журналы уже <b>интегрированы в фонды РГБ</b> и доступны для заказа в читальные залы. Выберите издание в каталоге выше, скопируйте его библиотечный шифр — и закажите через каталог на <a href="https://www.rsl.ru" target="_blank" rel="noopener">rsl.ru</a> или в самой библиотеке.</p>
+    <p class="access-lead reveal">Все книги и журналы уже <b>интегрированы в фонды РГБ</b> и доступны для заказа в читальные залы. Выберите издание в каталоге выше и найдите его по названию в электронном каталоге на <a href="https://search.rsl.ru" target="_blank" rel="noopener">search.rsl.ru</a> — или обратитесь к сотрудникам в самой библиотеке.</p>
     <div class="steps reveal">
       <div class="step">
         <span class="step-num" aria-hidden="true">1</span>
         <span class="step-tag">Шаг 01</span>
-        <b>Найдите издание в каталоге</b>
-        <p>Выберите книгу или журнал на этой странице и скопируйте его библиотечный шифр — например, ЕБШ10877.</p>
+        <b>Выберите издание в каталоге</b>
+        <p>Найдите книгу или журнал на этой странице и запомните точное название — оно понадобится для заказа.</p>
       </div>
       <div class="step">
         <span class="step-num" aria-hidden="true">2</span>
         <span class="step-tag">Шаг 02</span>
         <b>Закажите в читальный зал</b>
-        <p>Закажите издание по шифру через каталог на <a href="https://www.rsl.ru" target="_blank" rel="noopener">rsl.ru</a> или в самой библиотеке.</p>
+        <p>Найдите издание по названию в электронном каталоге на <a href="https://search.rsl.ru" target="_blank" rel="noopener">search.rsl.ru</a> и оформите заказ — или попросите помощи у сотрудников библиотеки.</p>
       </div>
       <div class="step">
         <span class="step-num" aria-hidden="true">3</span>
@@ -708,7 +732,6 @@ __CARDS__
     <div class="modal-info">
       <p class="modal-kind" id="m-kind"></p>
       <h3 class="modal-title" id="m-title"></h3>
-      <div class="card-code modal-code" id="m-code" title="Нажмите, чтобы скопировать шифр"></div>
       <p class="modal-rec" id="m-rec"></p>
       <p class="modal-text" id="m-text"></p>
       <a class="btn btn-dark modal-cta" href="#access" data-close>Как заказать в РГБ</a>
@@ -761,7 +784,6 @@ var openModal;
   var mImg = document.getElementById('m-img');
   var mKind = document.getElementById('m-kind');
   var mTitle = document.getElementById('m-title');
-  var mCode = document.getElementById('m-code');
   var mRec = document.getElementById('m-rec');
   var mText = document.getElementById('m-text');
 
@@ -772,7 +794,6 @@ var openModal;
     mImg.alt = img.getAttribute('alt') || '';
     mKind.textContent = card.dataset.kind === 'book' ? 'Книга' : 'Журнал';
     mTitle.textContent = card.querySelector('.card-title').textContent;
-    mCode.textContent = card.querySelector('.card-code').textContent;
     mRec.innerHTML = 'Рекомендует <b></b>' + (role ? '<i></i>' : '');
     mRec.querySelector('b').textContent = card.dataset.person;
     if (role) mRec.querySelector('i').textContent = role.textContent;
@@ -790,16 +811,9 @@ var openModal;
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && !modal.hidden) closeModal();
   });
-  /* копирование шифра из попапа */
-  mCode.addEventListener('click', function(){
-    var t = mCode.textContent.trim();
-    function done(){ mCode.classList.add('copied'); setTimeout(function(){ mCode.classList.remove('copied'); }, 1400); }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, done); else done();
-  });
-  /* клик по карточке каталога — попап (кроме клика по шифру) */
+  /* клик по карточке каталога — попап */
   document.querySelectorAll('#grid .card').forEach(function(card){
     card.addEventListener('click', function(e){
-      if (e.target.closest('.card-code')) return; /* там — копирование */
       openModal(card);
     });
   });
@@ -848,20 +862,6 @@ document.querySelectorAll('.card-more').forEach(function(btn){
     var open = card.classList.toggle('open');
     btn.textContent = open ? 'Свернуть' : 'Читать полностью';
     btn.setAttribute('aria-expanded', open);
-  });
-});
-
-/* ---------- копирование шифра ---------- */
-document.querySelectorAll('.card-code').forEach(function(el){
-  el.addEventListener('click', function(){
-    var code = el.textContent.trim();
-    function done(){
-      el.classList.add('copied');
-      setTimeout(function(){ el.classList.remove('copied'); }, 1400);
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(code).then(done, done);
-    } else { done(); }
   });
 });
 

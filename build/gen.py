@@ -62,13 +62,12 @@ def card(i):
     t = html.escape(i["title"])
     return f'''
       <article class="card" data-kind="{i['kind']}" data-person="{html.escape(i['person'])}"
-               data-search="{html.escape((i['title'] + ' ' + i['code']).lower())}" id="item-{i['idx']}">
+               data-search="{html.escape(i['title'].lower())}" id="item-{i['idx']}">
         <div class="card-cover">
           <img src="assets/covers/{i['idx']:02d}.jpg" alt="{t} — обложка" loading="lazy">
           <span class="card-kind">{kind_label}</span>
         </div>
         <div class="card-body">
-          <div class="card-code" title="Библиотечный шифр для заказа в РГБ">{i['code']}</div>
           <h3 class="card-title">{t}</h3>
           <p class="card-rec">Рекомендует <b>{html.escape(i['person'])}</b><span class="card-role">{html.escape(i['role'])}</span></p>
           <p class="card-text">{html.escape(i['text'])}</p>
