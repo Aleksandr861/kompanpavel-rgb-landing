@@ -884,6 +884,31 @@ document.querySelectorAll('.card-more').forEach(function(btn){
   onScroll();
 })();
 
+/* ---------- шапка во встроенных браузерах (Telegram, VK и т.п.) ----------
+   Там видимая область начинается ниже разметочной: панель браузера занимает
+   верх, и position:fixed прижимается к разметочному верху — выше видимого.
+   В этой полосе прокручивается контент страницы («просвет» над шапкой).
+   Величину сдвига даёт visualViewport.offsetTop — на неё и опускаем шапку.
+   В обычных браузерах offsetTop = 0, поэтому сдвига нет.                    */
+(function(){
+  var vv = window.visualViewport;
+  if (!vv) return;
+  var hd = document.querySelector('.hd');
+  if (!hd) return;
+  var last = -1;
+  function sync(){
+    var off = Math.max(0, Math.round(vv.offsetTop));
+    if (off === last) return;
+    last = off;
+    hd.style.transform = off ? 'translateY(' + off + 'px)' : '';
+  }
+  vv.addEventListener('scroll', sync);
+  vv.addEventListener('resize', sync);
+  window.addEventListener('scroll', sync, {passive:true});
+  window.addEventListener('orientationchange', sync);
+  sync();
+})();
+
 /* ---------- появление секций ---------- */
 (function(){
   if (!('IntersectionObserver' in window)) {
