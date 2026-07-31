@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Диагностика</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#fff;font-family:ui-monospace,Menlo,monospace}
+
+/* маркер: фиксированный у top:0, без всяких хитростей */
+.m1{position:fixed;top:0;left:0;right:0;height:44px;z-index:60;
+  background:rgba(255,0,128,.85);color:#fff;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+
+/* маркер: фиксированный, фон растянут вверх отрицательным margin */
+.m2{position:fixed;top:0;left:0;right:0;z-index:55;
+  background:rgba(0,180,255,.85);color:#000;font-size:11px;font-weight:700;
+  margin-top:-300px;padding-top:300px;height:344px;
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px}
+
+/* полоса цифр */
+.out{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#000;color:#0f0;
+  font-size:11px;line-height:1.5;padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+  white-space:pre}
+
+.probe{position:fixed;top:0;left:0;width:1px;height:1px;
+  padding-top:env(safe-area-inset-top);pointer-events:none;opacity:0}
+
+.strip{display:flex;gap:8px;padding:0 8px;margin:18px 0}
+.strip div{flex:0 0 110px;height:150px;border-radius:4px;
+  background:linear-gradient(160deg,#1b2a4a,#7a2b3f);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
+p{padding:14px 16px;font-size:15px;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div class="probe" id="probe"></div>
+<div class="m2">СИНИЙ: фон растянут вверх на 300px</div>
+<div class="m1">РОЗОВЫЙ: fixed top:0</div>
+
+<div style="height:380px"></div>
+<p><b>Прокрути вниз и сделай ОДИН скриншот</b>, где видно и верх экрана, и чёрную полосу с цифрами внизу.</p>
+<div class="strip"><div>1</div><div>2</div><div>3</div><div>4</div></div>
+<p>Смотрим: где оказался розовый маркер относительно панели Telegram, и закрасил ли синий зону выше.</p>
+<div class="strip"><div>5</div><div>6</div><div>7</div><div>8</div></div>
+<p>Если над розовым видны эти плашки — значит страница рисуется выше, чем top:0.</p>
+<div class="strip"><div>9</div><div>10</div><div>11</div><div>12</div></div>
+<p>Ещё прокрутки для верности.</p>
+<div class="strip"><div>13</div><div>14</div><div>15</div><div>16</div></div>
+<p>Конец.</p>
+<div style="height:200px"></div>
+
+<div class="out" id="out">…</div>
+
+<script>
+var out = document.getElementById('out');
+var probe = document.getElementById('probe');
+function upd(){
+  var vv = window.visualViewport;
+  var m1 = document.querySelector('.m1').getBoundingClientRect();
+  var m2 = document.querySelector('.m2').getBoundingClientRect();
+  var safeTop = getComputedStyle(probe).paddingTop;
+  var t = [
+    'innerH=' + window.innerHeight + '  clientH=' + document.documentElement.clientHeight,
+    'scrollY=' + Math.round(window.scrollY),
+    vv ? ('vv.offsetTop=' + Math.round(vv.offsetTop) + '  vv.pageTop=' + Math.round(vv.pageTop) + '  vv.h=' + Math.round(vv.height)) : 'visualViewport: нет',
+    'safe-area-top=' + safeTop,
+    'РОЗОВЫЙ top=' + Math.round(m1.top) + ' bottom=' + Math.round(m1.bottom),
+    'СИНИЙ top=' + Math.round(m2.top) + ' bottom=' + Math.round(m2.bottom),
+    'UA=' + navigator.userAgent.slice(0, 60)
+  ].join('\n');
+  out.textContent = t;
+}
+upd();
+window.addEventListener('scroll', upd, {passive:true});
+window.addEventListener('resize', upd);
+if (window.visualViewport){
+  window.visualViewport.addEventListener('scroll', upd);
+  window.visualViewport.addEventListener('resize', upd);
+}
+</script>
+</body>
+</html>
