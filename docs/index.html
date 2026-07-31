@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+/* Встроенный браузер Telegram определяется только по его инъекции: UA он
+   подделывает под обычный Safari. Класс ставим до отрисовки, чтобы страница
+   сразу собралась в режиме внутренней прокрутки и не было скачка. */
+if (window.TelegramWebviewProxy || window.TelegramWebview) {
+  document.documentElement.className += ' tg';
+}
+</script>
 <title>Коллекция fashion-изданий в РГБ — KOMPAN PAVEL</title>
 <meta name="description" content="В «Ленинке» появилась коллекция лучших мировых fashion-изданий от Павла Компана и ведущих экспертов моды. Полный список с аннотациями — все издания доступны для заказа в читальных залах.">
 <meta property="og:type" content="website">
@@ -28,6 +36,22 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;background:#fff}
+
+/* ---------- режим встроенного браузера (Telegram на iOS) ----------
+   Telegram располагает вебвью ниже своей панели адреса и при этом отключает
+   обрезку содержимого (scrollView.clipsToBounds = false). Из-за этого контент
+   документа рисуется ВЫШЕ верхней границы вебвью — в полосе под панелью, куда
+   не дотягивается ни fixed, ни sticky. Лечится переносом прокрутки в свой
+   контейнер: overflow создаёт настоящую обрезку, и вылезать становится нечему.
+   Класс вешается из JS только при обнаружении Telegram — обычные браузеры
+   продолжают прокручивать страницу штатно. */
+html.tg,html.tg body{height:100%;overflow:hidden;overscroll-behavior:none}
+html.tg #app{
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+}
 body{
   background:var(--bg); color:var(--ink);
   font-family:'Inter',system-ui,sans-serif;
@@ -577,6 +601,11 @@ img,svg,video,iframe{max-width:100%}
     </nav>
   </div>
 </header>
+
+<!-- Весь прокручиваемый контент — внутри #app. Во встроенном браузере Telegram
+     прокрутка переносится сюда: контейнер с overflow действительно обрезает
+     содержимое, и оно не вылезает в полосу под панелью браузера. -->
+<div id="app">
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
@@ -1271,22 +1300,6 @@ img,svg,video,iframe{max-width:100%}
 </section>
 
 
-<!-- ================= ПОПАП ИЗДАНИЯ ================= -->
-<div class="modal" id="modal" hidden>
-  <div class="modal-back" data-close></div>
-  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="m-title">
-    <button class="modal-x" type="button" data-close aria-label="Закрыть">&times;</button>
-    <div class="modal-cover"><img id="m-img" src="" alt=""></div>
-    <div class="modal-info">
-      <p class="modal-kind" id="m-kind"></p>
-      <h3 class="modal-title" id="m-title"></h3>
-      <p class="modal-rec" id="m-rec"></p>
-      <p class="modal-text" id="m-text"></p>
-      <a class="btn btn-dark modal-cta" href="#access" data-close>Как заказать в РГБ</a>
-    </div>
-  </div>
-</div>
-
 <!-- ================= FOOTER ================= -->
 <footer class="ft">
   <div class="wrap ft-in">
@@ -1302,6 +1315,24 @@ img,svg,video,iframe{max-width:100%}
     <p class="ft-copy">© 2026 <a href="https://kompanpavel.com">KOMPAN PAVEL</a>. Все права защищены.</p>
   </div>
 </footer>
+</div><!-- /#app -->
+
+<!-- ================= ПОПАП ИЗДАНИЯ =================
+     Вне #app: иначе контейнер прокрутки обрезал бы попап. -->
+<div class="modal" id="modal" hidden>
+  <div class="modal-back" data-close></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <button class="modal-x" type="button" data-close aria-label="Закрыть">&times;</button>
+    <div class="modal-cover"><img id="m-img" src="" alt=""></div>
+    <div class="modal-info">
+      <p class="modal-kind" id="m-kind"></p>
+      <h3 class="modal-title" id="m-title"></h3>
+      <p class="modal-rec" id="m-rec"></p>
+      <p class="modal-text" id="m-text"></p>
+      <a class="btn btn-dark modal-cta" href="#access" data-close>Как заказать в РГБ</a>
+    </div>
+  </div>
+</div>
 
 <script>
 /* ---------- лента обложек ---------- */
@@ -1413,37 +1444,19 @@ document.querySelectorAll('.card-more').forEach(function(btn){
   });
 });
 
-/* ---------- шапка: белый фон при прокрутке, всё чёрное ---------- */
+/* ---------- шапка: белый фон при прокрутке, всё чёрное ----------
+   В режиме встроенного браузера прокручивается #app, а не окно. */
 (function(){
   var hd = document.querySelector('.hd');
-  function onScroll(){ hd.classList.toggle('scrolled', window.scrollY > 2); }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-})();
-
-/* ---------- шапка во встроенных браузерах (Telegram, VK и т.п.) ----------
-   Там видимая область начинается ниже разметочной: панель браузера занимает
-   верх, и position:fixed прижимается к разметочному верху — выше видимого.
-   В этой полосе прокручивается контент страницы («просвет» над шапкой).
-   Величину сдвига даёт visualViewport.offsetTop — на неё и опускаем шапку.
-   В обычных браузерах offsetTop = 0, поэтому сдвига нет.                    */
-(function(){
-  var vv = window.visualViewport;
-  if (!vv) return;
-  var hd = document.querySelector('.hd');
-  if (!hd) return;
-  var last = -1;
-  function sync(){
-    var off = Math.max(0, Math.round(vv.offsetTop));
-    if (off === last) return;
-    last = off;
-    hd.style.transform = off ? 'translateY(' + off + 'px)' : '';
+  var app = document.getElementById('app');
+  var tg = document.documentElement.classList.contains('tg');
+  var target = (tg && app) ? app : window;
+  function onScroll(){
+    var y = (tg && app) ? app.scrollTop : window.scrollY;
+    hd.classList.toggle('scrolled', y > 2);
   }
-  vv.addEventListener('scroll', sync);
-  vv.addEventListener('resize', sync);
-  window.addEventListener('scroll', sync, {passive:true});
-  window.addEventListener('orientationchange', sync);
-  sync();
+  target.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 })();
 
 /* ---------- появление секций ---------- */
