@@ -32,22 +32,43 @@ def split_rec(s):
             return role, s[len(role):].strip()
     return "", s
 
+# В таблице сначала идут книги, затем блоком журналы. У книг описание, как
+# правило, начинается с отдельной строки-заголовка — но признак неточен с обеих
+# сторон: у дописанных в начало «500 страниц ответов» и «Before Now» такой
+# строки нет (а это книги), и наоборот, у пары журналов она есть.
+# Надёжнее опереться на структуру: находим сплошной участок строк-заголовков —
+# он и есть блок книг. Всё до него (дописанное сверху) — тоже книги,
+# всё после — журналы.
+def _has_head(r):
+    return "\n" in str(ws.cell(r, 2).value or "")
+
+_rows = [r for r in range(2, ws.max_row + 1)
+         if str(ws.cell(r, 1).value or "").strip()]
+_first_head = next((r for r in _rows if _has_head(r)), None)
+if _first_head is None:
+    LAST_BOOK_ROW = 1
+else:
+    LAST_BOOK_ROW = _first_head
+    for r in _rows:
+        if r > _first_head and _has_head(r) and r == LAST_BOOK_ROW + 1:
+            LAST_BOOK_ROW = r
+
 items = []
-for r in range(2, 38):
+# диапазон берём по факту: заказчик дописывает строки, зашивать число нельзя
+for r in range(2, ws.max_row + 1):
     name = str(ws.cell(r, 1).value or "").strip()
     if not name:
         continue
     desc = str(ws.cell(r, 2).value or "").strip()
     rec = clean_rec(str(ws.cell(r, 4).value or ""))
+    kind = "book" if r <= LAST_BOOK_ROW else "mag"
     if "\n" in desc:
         first, rest = desc.split("\n", 1)
         title = first.strip().rstrip(".")
         text = re.sub(r"\s*\n\s*", " ", rest).strip()
-        kind = "book"
     else:
         title = name
         text = desc
-        kind = "mag"
     role, person = split_rec(rec)
     idx = r - 1
     # ПЛЕЙСХОЛДЕРЫ шифров — заменить на реальные из РГБ
@@ -77,8 +98,12 @@ def card(i):
 
 cards_html = "\n".join(card(i) for i in items)
 
-# лента обложек в hero: 14 изданий, дубль для бесшовной прокрутки
-MARQUEE_PICKS = [1, 2, 3, 4, 5, 10, 12, 14, 20, 22, 24, 25, 28, 35]
+# лента обложек в hero: 14 изданий, дубль для бесшовной прокрутки.
+# 1 — «500 страниц ответов», книга самого KOMPAN PAVEL, по просьбе клиента идёт
+# первой. 2 — «Before Now» Головкина: в каталоге есть, но на первый экран его
+# клиент просил не выводить. Остальные номера сдвинуты на +2 после того, как
+# в таблицу добавили две книги в начало.
+MARQUEE_PICKS = [1, 3, 4, 5, 6, 7, 12, 14, 16, 22, 24, 26, 30, 37]
 by_idx = {i["idx"]: i for i in items}
 mq_one = "\n".join(
     f'      <a class="mq-item" href="#item-{n}" title="{html.escape(by_idx[n]["title"])} — открыть в каталоге">'
