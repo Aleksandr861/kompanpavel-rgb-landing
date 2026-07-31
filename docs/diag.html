@@ -3,24 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Диагностика 3</title>
+<title>Диагностика 4</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:#fff;font-family:ui-monospace,Menlo,monospace}
 
-/* ЗЕЛЁНЫЙ — sticky, живёт в потоке документа */
-.sticky{position:sticky;top:0;z-index:70;height:46px;
-  background:#00c853;color:#fff;font-size:12px;font-weight:700;
-  display:flex;align-items:center;justify-content:center}
+.hd{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;background:#fff;
+  border-bottom:2px solid #000;
+  display:flex;align-items:center;justify-content:space-between;padding:0 14px;
+  font-size:15px;font-weight:800}
 
-/* РОЗОВЫЙ — fixed top:0 */
-.fx{position:fixed;top:0;left:0;right:0;height:26px;z-index:60;
-  background:rgba(255,0,128,.9);color:#fff;font-size:11px;font-weight:700;
-  display:flex;align-items:center;justify-content:center}
+/* ===== ВАРИАНТ H: отдельная непрозрачная заглушка над вьюпортом ===== */
+.cover{display:none}
+body.h .cover{
+  display:block;position:fixed;left:0;right:0;
+  top:-240px;height:241px;          /* 240 над вьюпортом + 1px внутрь, чтобы слой отрисовался */
+  background:#fff;z-index:2147483000;pointer-events:none;
+}
 
-.card{margin:14px 12px;padding:12px;border:3px solid #000;border-radius:8px;
-  background:#ffffe0;font-size:13px;line-height:1.5;white-space:pre-wrap;word-break:break-all}
-.card b{display:block;font-size:15px;margin-bottom:6px}
+/* ===== ВАРИАНТ G: внутренний контейнер прокрутки (реальная обрезка) ===== */
+body.g{height:100%;overflow:hidden;overscroll-behavior:none}
+body.g #app{
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding-top:56px;
+}
+
+#app{padding-top:56px}
+
+.pick{position:fixed;left:0;right:0;bottom:0;z-index:2147483001;display:flex;
+  background:#111;padding:10px;gap:8px}
+.pick button{flex:1;padding:16px 0;font-size:16px;font-weight:800;border:0;border-radius:8px;
+  background:#333;color:#fff}
+.pick button.on{background:#fff;color:#111}
+
 .hint{padding:14px 16px;font-size:16px;line-height:1.5;font-family:system-ui,sans-serif}
 .strip{display:flex;gap:8px;padding:0 8px;margin:16px 0}
 .strip div{flex:0 0 110px;height:150px;border-radius:4px;
@@ -28,64 +44,43 @@ html,body{background:#fff;font-family:ui-monospace,Menlo,monospace}
   display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
 </style>
 </head>
-<body>
+<body class="h">
 
-<div class="sticky">ЗЕЛЁНЫЙ — sticky</div>
+<div class="cover" aria-hidden="true"></div>
 
-<div class="fx">РОЗОВЫЙ — fixed top:0</div>
+<header class="hd"><span>KOMPAN</span><span style="font-size:11px">ШАПКА</span></header>
 
-<p class="hint"><b>Главный вопрос:</b> при прокрутке зелёная полоса прижимается к САМОМУ верху страницы или встаёт ниже, как розовая?</p>
+<div id="app">
+  <p class="hint"><b>Прокручивай и смотри — просвечивает ли что-то над шапкой.</b> Потом переключи кнопку внизу и повтори.</p>
+  <div class="strip"><div>1</div><div>2</div><div>3</div></div>
+  <p class="hint"><b>H</b> — непрозрачная заглушка поверх полосы.</p>
+  <div class="strip"><div>4</div><div>5</div><div>6</div></div>
+  <p class="hint"><b>G</b> — прокрутка внутри контейнера, который реально обрезает контент.</p>
+  <div class="strip"><div>7</div><div>8</div><div>9</div></div>
+  <p class="hint">Нужен вариант, где сверху всегда чисто.</p>
+  <div class="strip"><div>10</div><div>11</div><div>12</div></div>
+  <div class="strip"><div>13</div><div>14</div><div>15</div></div>
+  <div class="strip"><div>16</div><div>17</div><div>18</div></div>
+  <p class="hint" style="font-size:20px;font-weight:800">Конец. Скажи, какая буква держит.</p>
+  <div style="height:160px"></div>
+</div>
 
-<div class="card" id="card"><b>Замер появится после прокрутки</b>прокрути вниз и вернись сюда</div>
-
-<p class="hint">Прокрути вниз до конца, потом вернись наверх и сними скриншот жёлтой карточки.</p>
-
-<div class="strip"><div>1</div><div>2</div><div>3</div></div>
-<div class="strip"><div>4</div><div>5</div><div>6</div></div>
-<div class="strip"><div>7</div><div>8</div><div>9</div></div>
-<div class="strip"><div>10</div><div>11</div><div>12</div></div>
-<div class="strip"><div>13</div><div>14</div><div>15</div></div>
-<div class="strip"><div>16</div><div>17</div><div>18</div></div>
-<p class="hint" style="font-size:20px;font-weight:800">Хватит — прокручивай обратно наверх.</p>
-<div style="height:100px"></div>
+<div class="pick">
+  <button data-v="h" class="on">H — заглушка</button>
+  <button data-v="g">G — контейнер</button>
+</div>
 
 <script>
-var card = document.getElementById('card');
-var st = document.querySelector('.sticky');
-var fx = document.querySelector('.fx');
-var best = null, maxY = -1;
-
-function snap(){
-  var vv = window.visualViewport;
-  var y = Math.round(window.scrollY);
-  var rs = st.getBoundingClientRect();
-  var rf = fx.getBoundingClientRect();
-  var rec = {
-    y: y,
-    innerH: window.innerHeight,
-    vvTop: vv ? Math.round(vv.offsetTop) : 'нет',
-    vvH: vv ? Math.round(vv.height) : 'нет',
-    stick: Math.round(rs.top) + '..' + Math.round(rs.bottom),
-    fix: Math.round(rf.top) + '..' + Math.round(rf.bottom)
-  };
-  if (y > maxY){ maxY = y; best = rec; render(); }
-}
-function render(){
-  if (!best) return;
-  card.innerHTML = '<b>ЗАМЕР на прокрутке ' + best.y + 'px</b>' +
-    'innerHeight = ' + best.innerH + '\n' +
-    'visualViewport.offsetTop = ' + best.vvTop + '\n' +
-    'visualViewport.height = ' + best.vvH + '\n' +
-    'ЗЕЛЁНЫЙ sticky = ' + best.stick + '\n' +
-    'РОЗОВЫЙ fixed = ' + best.fix;
-}
-snap();
-window.addEventListener('scroll', snap, {passive:true});
-window.addEventListener('resize', snap);
-if (window.visualViewport){
-  window.visualViewport.addEventListener('scroll', snap);
-  window.visualViewport.addEventListener('resize', snap);
-}
+document.querySelectorAll('.pick button').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.body.className = b.dataset.v;
+    document.querySelectorAll('.pick button').forEach(function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+    window.scrollTo(0,0);
+    var app = document.getElementById('app');
+    if (app) app.scrollTop = 0;
+  });
+});
 </script>
 </body>
 </html>
