@@ -8,77 +8,96 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:#fff;font-family:ui-monospace,Menlo,monospace}
 
-/* маркер: фиксированный у top:0, без всяких хитростей */
-.m1{position:fixed;top:0;left:0;right:0;height:44px;z-index:60;
-  background:rgba(255,0,128,.85);color:#fff;font-size:12px;font-weight:700;
+/* розовый: обычный fixed у top:0 */
+.m1{position:fixed;top:0;left:0;right:0;height:40px;z-index:60;
+  background:rgba(255,0,128,.85);color:#fff;font-size:11px;font-weight:700;
   display:flex;align-items:center;justify-content:center}
 
-/* маркер: фиксированный, фон растянут вверх отрицательным margin */
+/* синий: fixed с фоном, растянутым вверх */
 .m2{position:fixed;top:0;left:0;right:0;z-index:55;
-  background:rgba(0,180,255,.85);color:#000;font-size:11px;font-weight:700;
-  margin-top:-300px;padding-top:300px;height:344px;
-  display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px}
+  background:rgba(0,180,255,.9);color:#000;font-size:10px;font-weight:700;
+  margin-top:-300px;padding-top:300px;height:340px;
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px}
 
-/* полоса цифр */
-.out{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#000;color:#0f0;
-  font-size:11px;line-height:1.5;padding:8px 10px calc(8px + env(safe-area-inset-bottom));
-  white-space:pre}
-
-.probe{position:fixed;top:0;left:0;width:1px;height:1px;
-  padding-top:env(safe-area-inset-top);pointer-events:none;opacity:0}
-
-.strip{display:flex;gap:8px;padding:0 8px;margin:18px 0}
+.card{margin:0 12px 16px;padding:12px;border:3px solid #000;border-radius:8px;
+  background:#ffffe0;font-size:13px;line-height:1.55;white-space:pre-wrap;word-break:break-all}
+.card b{display:block;font-size:15px;margin-bottom:6px}
+.hint{padding:14px 16px;font-size:16px;line-height:1.5;font-family:system-ui,sans-serif}
+.strip{display:flex;gap:8px;padding:0 8px;margin:16px 0}
 .strip div{flex:0 0 110px;height:150px;border-radius:4px;
   background:linear-gradient(160deg,#1b2a4a,#7a2b3f);color:#fff;
   display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
-p{padding:14px 16px;font-size:15px;line-height:1.5}
 </style>
 </head>
 <body>
 
-<div class="probe" id="probe"></div>
-<div class="m2">СИНИЙ: фон растянут вверх на 300px</div>
-<div class="m1">РОЗОВЫЙ: fixed top:0</div>
+<div class="m2">СИНИЙ — фон растянут вверх на 300px</div>
+<div class="m1">РОЗОВЫЙ — fixed top:0</div>
 
-<div style="height:380px"></div>
-<p><b>Прокрути вниз и сделай ОДИН скриншот</b>, где видно и верх экрана, и чёрную полосу с цифрами внизу.</p>
-<div class="strip"><div>1</div><div>2</div><div>3</div><div>4</div></div>
-<p>Смотрим: где оказался розовый маркер относительно панели Telegram, и закрасил ли синий зону выше.</p>
-<div class="strip"><div>5</div><div>6</div><div>7</div><div>8</div></div>
-<p>Если над розовым видны эти плашки — значит страница рисуется выше, чем top:0.</p>
-<div class="strip"><div>9</div><div>10</div><div>11</div><div>12</div></div>
-<p>Ещё прокрутки для верности.</p>
-<div class="strip"><div>13</div><div>14</div><div>15</div><div>16</div></div>
-<p>Конец.</p>
-<div style="height:200px"></div>
+<div style="height:360px"></div>
 
-<div class="out" id="out">…</div>
+<p class="hint"><b>Что делать:</b> прокрути вниз до конца, потом вернись сюда наверх и сними скриншот жёлтой карточки. Она запоминает значения при самой глубокой прокрутке — когда панель Telegram схлопнута.</p>
+
+<div class="card" id="card"><b>Замер появится после прокрутки</b>прокрути вниз и вернись</div>
+
+<p class="hint">Ниже — плашки для прокрутки. Заодно посмотри, проезжают ли они НАД розовой полосой.</p>
+
+<div class="strip"><div>1</div><div>2</div><div>3</div></div>
+<div class="strip"><div>4</div><div>5</div><div>6</div></div>
+<div class="strip"><div>7</div><div>8</div><div>9</div></div>
+<div class="strip"><div>10</div><div>11</div><div>12</div></div>
+<div class="strip"><div>13</div><div>14</div><div>15</div></div>
+<div class="strip"><div>16</div><div>17</div><div>18</div></div>
+<p class="hint" style="font-size:22px;font-weight:800">Досюда хватит — прокручивай обратно наверх, к жёлтой карточке.</p>
+<div style="height:120px"></div>
 
 <script>
-var out = document.getElementById('out');
-var probe = document.getElementById('probe');
-function upd(){
+var card = document.getElementById('card');
+var m1 = document.querySelector('.m1');
+var m2 = document.querySelector('.m2');
+var best = null;      // замер на максимальной прокрутке
+var maxY = -1;
+var probe = document.createElement('div');
+probe.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;padding-top:env(safe-area-inset-top);opacity:0;pointer-events:none';
+document.body.appendChild(probe);
+
+function snap(){
   var vv = window.visualViewport;
-  var m1 = document.querySelector('.m1').getBoundingClientRect();
-  var m2 = document.querySelector('.m2').getBoundingClientRect();
-  var safeTop = getComputedStyle(probe).paddingTop;
-  var t = [
-    'innerH=' + window.innerHeight + '  clientH=' + document.documentElement.clientHeight,
-    'scrollY=' + Math.round(window.scrollY),
-    vv ? ('vv.offsetTop=' + Math.round(vv.offsetTop) + '  vv.pageTop=' + Math.round(vv.pageTop) + '  vv.h=' + Math.round(vv.height)) : 'visualViewport: нет',
-    'safe-area-top=' + safeTop,
-    'РОЗОВЫЙ top=' + Math.round(m1.top) + ' bottom=' + Math.round(m1.bottom),
-    'СИНИЙ top=' + Math.round(m2.top) + ' bottom=' + Math.round(m2.bottom),
-    'UA=' + navigator.userAgent.slice(0, 60)
-  ].join('\n');
-  out.textContent = t;
+  var y = Math.round(window.scrollY);
+  var r1 = m1.getBoundingClientRect();
+  var r2 = m2.getBoundingClientRect();
+  var rec = {
+    y: y,
+    innerH: window.innerHeight,
+    clientH: document.documentElement.clientHeight,
+    vvTop: vv ? Math.round(vv.offsetTop) : 'нет',
+    vvPageTop: vv ? Math.round(vv.pageTop) : 'нет',
+    vvH: vv ? Math.round(vv.height) : 'нет',
+    safeTop: getComputedStyle(probe).paddingTop,
+    pink: Math.round(r1.top) + '..' + Math.round(r1.bottom),
+    blue: Math.round(r2.top) + '..' + Math.round(r2.bottom)
+  };
+  if (y > maxY){ maxY = y; best = rec; render(); }
 }
-upd();
-window.addEventListener('scroll', upd, {passive:true});
-window.addEventListener('resize', upd);
+function render(){
+  if (!best) return;
+  card.innerHTML = '<b>ЗАМЕР на прокрутке ' + best.y + 'px</b>' +
+    'innerHeight = ' + best.innerH + '\n' +
+    'clientHeight = ' + best.clientH + '\n' +
+    'visualViewport.offsetTop = ' + best.vvTop + '\n' +
+    'visualViewport.pageTop = ' + best.vvPageTop + '\n' +
+    'visualViewport.height = ' + best.vvH + '\n' +
+    'safe-area-inset-top = ' + best.safeTop + '\n' +
+    'РОЗОВЫЙ (fixed top:0) = ' + best.pink + '\n' +
+    'СИНИЙ (фон вверх) = ' + best.blue + '\n' +
+    'UA = ' + navigator.userAgent.slice(0, 70);
+}
+snap();
+window.addEventListener('scroll', snap, {passive:true});
+window.addEventListener('resize', snap);
 if (window.visualViewport){
-  window.visualViewport.addEventListener('scroll', upd);
-  window.visualViewport.addEventListener('resize', upd);
+  window.visualViewport.addEventListener('scroll', snap);
+  window.visualViewport.addEventListener('resize', snap);
 }
 </script>
 </body>
