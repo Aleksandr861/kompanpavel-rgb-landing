@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Тест шапки 2</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#fff}
+body{background:#fff;font-family:system-ui,sans-serif}
+
+/* D: viewport-fit=cover + фон с запасом вверх */
+body.d .hd{
+  position:fixed;inset:0 0 auto;z-index:50;background:#fff;
+  margin-top:-400px;
+  padding-top:calc(400px + env(safe-area-inset-top));
+}
+/* E: viewport-fit=cover + sticky */
+body.e .hd{
+  position:sticky;top:0;z-index:50;background:#fff;
+  padding-top:env(safe-area-inset-top);
+}
+/* F: шапка вообще не закреплена — уезжает вместе со страницей */
+body.f .hd{
+  position:static;background:#fff;
+  padding-top:env(safe-area-inset-top);
+}
+
+.hd-in{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.logo{font-size:26px;font-weight:800;letter-spacing:-.02em}
+.sub{font-size:8px;color:#666;padding:0 20px 12px}
+
+.pick{position:fixed;left:0;right:0;bottom:0;z-index:999;display:flex;
+  background:#111;padding:10px;gap:8px;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+.pick button{flex:1;padding:14px 0;font-size:15px;font-weight:700;border:0;border-radius:8px;
+  background:#333;color:#fff}
+.pick button.on{background:#fff;color:#111}
+
+.strip{display:flex;gap:10px;padding:0 10px;margin:24px 0}
+.strip div{flex:0 0 130px;height:180px;border-radius:4px;
+  background:linear-gradient(160deg,#1b2a4a,#7a2b3f);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800}
+p{padding:16px 20px;font-size:17px;line-height:1.6}
+.big{font-size:30px;font-weight:800;padding:24px 20px}
+</style>
+</head>
+<body class="d">
+
+<header class="hd">
+  <div class="hd-in">
+    <span class="logo">KOMPAN</span>
+    <span style="font-size:11px;letter-spacing:.15em">КАТАЛОГ　ДОСТУП</span>
+  </div>
+  <div class="sub">× Российская государственная библиотека</div>
+</header>
+
+<div class="strip"><div>1</div><div>2</div><div>3</div><div>4</div></div>
+<p class="big">Прокручивай и смотри — просвечивает ли что-то СВЕРХУ за шапкой.</p>
+<div class="strip"><div>5</div><div>6</div><div>7</div><div>8</div></div>
+<p><b>D</b> — фиксированная шапка, страница растянута под панель Telegram.</p>
+<div class="strip"><div>9</div><div>10</div><div>11</div><div>12</div></div>
+<p><b>E</b> — sticky, страница растянута под панель.</p>
+<div class="strip"><div>13</div><div>14</div><div>15</div><div>16</div></div>
+<p><b>F</b> — шапка не закреплена, уезжает вместе со страницей.</p>
+<div class="strip"><div>17</div><div>18</div><div>19</div><div>20</div></div>
+<p class="big">Переключай кнопками внизу и каждый раз прокручивай туда-сюда.</p>
+<div class="strip"><div>21</div><div>22</div><div>23</div><div>24</div></div>
+<p>Нужен тот вариант, где сверху всегда сплошное белое.</p>
+<div class="strip"><div>25</div><div>26</div><div>27</div><div>28</div></div>
+<p>Ещё прокрутки.</p>
+<div class="strip"><div>29</div><div>30</div><div>31</div><div>32</div></div>
+<p class="big">Конец. Скажи, какая буква держит.</p>
+<div style="height:160px"></div>
+
+<div class="pick">
+  <button data-v="d" class="on">D</button>
+  <button data-v="e">E</button>
+  <button data-v="f">F</button>
+</div>
+
+<script>
+document.querySelectorAll('.pick button').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.body.className = b.dataset.v;
+    document.querySelectorAll('.pick button').forEach(function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+  });
+});
+</script>
+</body>
+</html>
