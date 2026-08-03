@@ -53,6 +53,15 @@ else:
         if r > _first_head and _has_head(r) and r == LAST_BOOK_ROW + 1:
             LAST_BOOK_ROW = r
 
+# Название + автор в одном заголовке — как у остальных изданий (там имя
+# фотографа зашито в названии альбома). У этих двух книг в таблице имени
+# автора в названии нет, дописываем вручную по просьбе заказчика:
+# сначала название, потом автор (не как обычно — не наоборот). Ключ — idx.
+TITLE_OVERRIDES = {
+    1: "500 страниц ответов. Том 1 Компан Павел",
+    2: "Before Now Данил Головкин",
+}
+
 items = []
 # диапазон берём по факту: заказчик дописывает строки, зашивать число нельзя
 for r in range(2, ws.max_row + 1):
@@ -71,6 +80,7 @@ for r in range(2, ws.max_row + 1):
         text = desc
     role, person = split_rec(rec)
     idx = r - 1
+    title = TITLE_OVERRIDES.get(idx, title)
     # ПЛЕЙСХОЛДЕРЫ шифров — заменить на реальные из РГБ
     code = f"ЕБШ{10876 + idx}"
     items.append(dict(idx=idx, title=title, text=text, code=code,
